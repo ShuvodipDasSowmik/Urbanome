@@ -1,5 +1,5 @@
 # Data Pathways to Healthy Cities and Human Settlement
-## NASA Space Apps Challenge 2024
+## NASA Space Apps Challenge 2025
 
 ### 🌍 Project Overview
 A comprehensive urban planning application that leverages NASA Earth observation data to develop smart strategies for sustainable city growth while maintaining the wellbeing of people and the environment.

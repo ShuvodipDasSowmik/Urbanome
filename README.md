@@ -71,4 +71,4 @@ nasa-healthy-cities/
 
 ---
 
-Built for NASA Space Apps Challenge 2024
+Built for NASA Space Apps Challenge 2025

@@ -1,19 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-import L from 'leaflet';
-import { FiMap, FiLayers, FiThermometer, FiDroplet, FiWind, FiActivity } from 'react-icons/fi';
-import { useCityData } from '../context/CityDataContext';
-import LoadingSpinner from '../components/common/LoadingSpinner';
-import 'leaflet/dist/leaflet.css';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Circle,
+  ImageOverlay,
+  useMap,
+} from "react-leaflet";
+import L from "leaflet";
+import {
+  FiMap,
+  FiLayers,
+  FiThermometer,
+  FiDroplet,
+  FiWind,
+  FiActivity,
+} from "react-icons/fi";
+import { useCityData } from "../context/CityDataContext";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import "leaflet/dist/leaflet.css";
 
-// Fix for default markers in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
 const Container = styled.div`
@@ -27,6 +41,7 @@ const Container = styled.div`
 const Header = styled.div`
   padding: 1rem 2rem;
   flex-shrink: 0;
+  height: 120px;
 `;
 
 const Title = styled.h1`
@@ -47,7 +62,8 @@ const ContentGrid = styled.div`
   gap: 1rem;
   flex: 1;
   padding: 0 2rem 2rem;
-  min-height: 0;
+  height: calc(100vh - 120px);
+  min-height: 600px;
 `;
 
 const MapWrapper = styled(motion.div)`
@@ -56,20 +72,14 @@ const MapWrapper = styled(motion.div)`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  min-height: 0;
-  
+  height: 100%;
+  min-height: 500px;
+
   .leaflet-container {
     width: 100%;
     height: 100%;
     border-radius: 12px;
   }
-`;
-
-const MapPlaceholder = styled.div`
-  text-align: center;
-  color: #3b82f6;
-  font-size: 1.125rem;
-  font-weight: 600;
 `;
 
 const ControlPanel = styled(motion.div)`
@@ -98,8 +108,8 @@ const LayerItem = styled.div`
   padding: 0.75rem;
   border-radius: 8px;
   margin-bottom: 0.5rem;
-  background: ${props => props.active ? '#eff6ff' : '#f8fafc'};
-  border: 1px solid ${props => props.active ? '#3b82f6' : '#e2e8f0'};
+  background: ${(props) => (props.active ? "#eff6ff" : "#f8fafc")};
+  border: 1px solid ${(props) => (props.active ? "#3b82f6" : "#e2e8f0")};
   cursor: pointer;
   transition: all 0.2s;
 
@@ -112,20 +122,20 @@ const LayerItem = styled.div`
 const LayerIcon = styled.div`
   margin-right: 0.75rem;
   margin-top: 0.125rem;
-  color: ${props => props.active ? '#3b82f6' : '#64748b'};
+  color: ${(props) => (props.active ? "#3b82f6" : "#64748b")};
 `;
 
 const LayerLabel = styled.div`
   flex: 1;
-  color: ${props => props.active ? '#1e293b' : '#64748b'};
-  font-weight: ${props => props.active ? '600' : '500'};
+  color: ${(props) => (props.active ? "#1e293b" : "#64748b")};
+  font-weight: ${(props) => (props.active ? "600" : "500")};
   font-size: 0.875rem;
 `;
 
 const LayerValue = styled.div`
   font-size: 0.8rem;
   font-weight: 600;
-  color: ${props => props.active ? '#3b82f6' : '#64748b'};
+  color: ${(props) => (props.active ? "#3b82f6" : "#64748b")};
 `;
 
 const LayerDescription = styled.div`
@@ -145,85 +155,226 @@ const DataSource = styled.div`
   display: inline-block;
 `;
 
+const ElevationLegend = styled.div`
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const LegendTitle = styled.h4`
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 0.9rem;
+`;
+
+const LegendGradient = styled.div`
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #00ffff,
+    #00ff00,
+    #ffff00,
+    #ffa500,
+    #ff0000
+  );
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+`;
+
+const LegendLabels = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #64748b;
+`;
+
+// Component to handle map sizing and view
+function MapController({ center, zoom }) {
+  const map = useMap();
+
+  useEffect(() => {
+    map.setView(center, zoom);
+
+    const timer1 = setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+
+    const timer2 = setTimeout(() => {
+      map.invalidateSize();
+    }, 500);
+
+    // Handle window resize
+    const handleResize = () => {
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [map, center, zoom]);
+
+  return null;
+}
+
+// component for elevation overlay
+function ElevationOverlay({ isVisible }) {
+  const [bounds, setBounds] = useState(null);
+  const [elevationStats, setElevationStats] = useState({ min: 0, max: 0 });
+
+  useEffect(() => {
+    // stored in public/data so that it's accessible directly. data here is bound eg. where to place the overlay
+    fetch("/data/dhaka_elevation_bounds.json")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Elevation bounds loaded:", data);
+        setBounds([
+          [data.south, data.west], // SW corner
+          [data.north, data.east], // NE corner
+        ]);
+
+        // estimate elevation stats based on typical Dhaka topography. there is also another file in data folder named
+        //dhaka_elevation_metadata.json which has more detailed stats if needed.
+        setElevationStats({
+          min: 2,
+          max: 85, // hard coded, we can extract from metadata file if needed
+        });
+      })
+      .catch((error) => {
+        console.error("Error loading elevation bounds:", error);
+        // hard coded if fetch fails
+        setBounds([
+          [23.4, 90.36], // SW corner (approx Dhaka bounds)
+          [23.6, 90.6], // NE corner (approx Dhaka bounds)
+        ]);
+        setElevationStats({ min: 2, max: 85 });
+      });
+  }, []);
+
+  if (!isVisible || !bounds) return null;
+
+  return (
+    <>
+      <ImageOverlay
+        url="/data/dhaka_elevation_overlay.png"
+        bounds={bounds}
+        opacity={0.65}
+        zIndex={500}
+        attribution="NASA SRTM Elevation Data"
+      />
+    </>
+  );
+}
+
+//**************************************************** */
+// Similarly onno layers add kora jabe
+
 const DigitalTwin = () => {
   const { selectedCity, nasaData, loading } = useCityData();
+  const mapRef = useRef(null);
   const [activeLayers, setActiveLayers] = useState({
     satellite: true,
     temperature: false,
     vegetation: false,
     precipitation: false,
-    airquality: false
+    airquality: false,
+    elevation: false,
   });
 
   const toggleLayer = (layer) => {
-    setActiveLayers(prev => ({
+    setActiveLayers((prev) => ({
       ...prev,
-      [layer]: !prev[layer]
+      [layer]: !prev[layer],
     }));
   };
 
-  // Default coordinates (London) if no city is selected
-  const mapCenter = selectedCity?.coordinates ? 
-    [selectedCity.coordinates[1], selectedCity.coordinates[0]] : 
-    [51.505, -0.09];
-  
+  // Use coordinates directly - assuming they are in [latitude, longitude] format
+  const mapCenter = selectedCity?.coordinates
+    ? selectedCity.coordinates
+    : [23.8103, 90.4125]; // Dhaka coordinates [latitude, longitude]
+
+  // Reasonable zoom level for city view
   const mapZoom = 11;
 
-  // Custom marker for temperature visualization
-  const createTemperatureMarker = (temp) => {
-    const color = temp > 25 ? '#ef4444' : temp > 15 ? '#f59e0b' : '#3b82f6';
-    return L.divIcon({
-      className: 'custom-div-icon',
-      html: `<div style="background-color: ${color}; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
-      iconSize: [20, 20],
-      iconAnchor: [10, 10]
-    });
+  // Handle map creation
+  const handleMapCreated = (mapInstance) => {
+    mapRef.current = mapInstance;
+    // Ensure proper sizing after creation
+    setTimeout(() => {
+      mapInstance.invalidateSize();
+    }, 50);
   };
 
+  useEffect(() => {
+    // Additional invalidation after component mounts
+    const timer = setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.invalidateSize();
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const layers = [
-    { 
-      key: 'satellite', 
-      label: 'Satellite Imagery', 
+    {
+      key: "satellite",
+      label: "Satellite Imagery",
       icon: <FiMap size={18} />,
-      description: 'High-resolution satellite imagery',
-      source: 'Landsat/Sentinel'
+      description: "High-resolution satellite imagery",
+      source: "Carto Voyager",
     },
-    { 
-      key: 'temperature', 
-      label: 'Land Surface Temperature', 
+    {
+      key: "temperature",
+      label: "Land Surface Temperature",
       icon: <FiThermometer size={18} />,
-      value: nasaData.temperature.current?.value || '--',
-      unit: '°C',
-      description: 'Surface temperature from thermal infrared sensors',
-      source: 'MODIS/VIIRS'
+      value: nasaData?.temperature?.current?.value || "--",
+      unit: "°C",
+      description: "Surface temperature from thermal infrared sensors",
+      source: "MODIS/VIIRS",
     },
-    { 
-      key: 'vegetation', 
-      label: 'Vegetation Index (NDVI)', 
+    {
+      key: "vegetation",
+      label: "Vegetation Index (NDVI)",
       icon: <FiLayers size={18} />,
-      value: nasaData.vegetation.ndvi?.current || '--',
-      unit: 'NDVI',
-      description: 'Vegetation health and density measurement',
-      source: 'MODIS/Landsat'
+      value: nasaData?.vegetation?.ndvi?.current || "--",
+      unit: "NDVI",
+      description: "Vegetation health and density measurement",
+      source: "MODIS/Landsat",
     },
-    { 
-      key: 'precipitation', 
-      label: 'Precipitation (IMERG)', 
+    {
+      key: "precipitation",
+      label: "Precipitation (IMERG)",
       icon: <FiDroplet size={18} />,
-      value: nasaData.precipitation.current?.value || '--',
-      unit: 'mm/day',
-      description: 'Real-time precipitation measurements',
-      source: 'GPM IMERG'
+      value: nasaData?.precipitation?.current?.value || "--",
+      unit: "mm/day",
+      description: "Real-time precipitation measurements",
+      source: "GPM IMERG",
     },
-    { 
-      key: 'airquality', 
-      label: 'Air Quality', 
+    {
+      key: "airquality",
+      label: "Air Quality",
       icon: <FiActivity size={18} />,
-      value: nasaData.airQuality.current?.aqi || '--',
-      unit: 'AQI',
-      description: 'Atmospheric composition and pollutant levels',
-      source: 'TEMPO'
-    }
+      value: nasaData?.airQuality?.current?.aqi || "--",
+      unit: "AQI",
+      description: "Atmospheric composition and pollutant levels",
+      source: "TEMPO",
+    },
+    {
+      key: "elevation",
+      label: "Elevation Map",
+      icon: <FiWind size={18} />,
+      description: "SRTM elevation data for Dhaka region",
+      source: "NASA SRTM",
+    },
   ];
 
   if (loading) {
@@ -233,7 +384,14 @@ const DigitalTwin = () => {
           <Title>City Digital Twin</Title>
           <Subtitle>Loading NASA Earth observation data...</Subtitle>
         </Header>
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <LoadingSpinner />
         </div>
       </Container>
@@ -244,7 +402,9 @@ const DigitalTwin = () => {
     <Container>
       <Header>
         <Title>City Digital Twin</Title>
-        <Subtitle>Interactive visualization of NASA Earth observation data</Subtitle>
+        <Subtitle>
+          Interactive visualization of NASA Earth observation data
+        </Subtitle>
       </Header>
 
       <ContentGrid>
@@ -256,39 +416,38 @@ const DigitalTwin = () => {
           <MapContainer
             center={mapCenter}
             zoom={mapZoom}
-            style={{ height: '100%', width: '100%' }}
-            zoomControl={true}
-            scrollWheelZoom={true}
+            style={{ height: "100%", width: "100%" }}
+            whenCreated={handleMapCreated}
+            maxZoom={18}
+            minZoom={3}
           >
-            {/* Base layer - OpenStreetMap */}
+            <MapController center={mapCenter} zoom={mapZoom} />
+
+            {/* Only Carto Voyager basemap */}
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+              subdomains="abcd"
+              maxZoom={20}
             />
-            
-            {/* Satellite layer overlay */}
-            {activeLayers.satellite && (
-              <TileLayer
-                attribution='&copy; <a href="https://www.esri.com/">Esri</a>'
-                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                opacity={0.7}
-              />
-            )}
 
             {/* City marker */}
             <Marker position={mapCenter}>
               <Popup>
                 <div>
-                  <h3>{selectedCity?.name || 'Selected Location'}</h3>
-                  <p>{selectedCity?.country || 'Unknown Country'}</p>
-                  <p>Coordinates: {mapCenter[0].toFixed(4)}°, {mapCenter[1].toFixed(4)}°</p>
+                  <h3>{selectedCity?.name || "Dhaka"}</h3>
+                  <p>{selectedCity?.country || "Bangladesh"}</p>
+                  <p>
+                    Coordinates: {mapCenter[0].toFixed(4)}°,{" "}
+                    {mapCenter[1].toFixed(4)}°
+                  </p>
                 </div>
               </Popup>
             </Marker>
 
-            {/* Temperature visualization */}
-            {activeLayers.temperature && nasaData.temperature.current?.value && (
-              <>
+            {/* Temperature */}
+            {activeLayers.temperature &&
+              nasaData?.temperature?.current?.value && (
                 <Circle
                   center={mapCenter}
                   radius={5000}
@@ -300,16 +459,17 @@ const DigitalTwin = () => {
                   <Popup>
                     <div>
                       <h4>Temperature Zone</h4>
-                      <p>Surface Temperature: {nasaData.temperature.current.value}°C</p>
-                      <p>Source: NASA MODIS/VIIRS</p>
+                      <p>
+                        Surface Temperature:{" "}
+                        {nasaData.temperature.current.value}°C
+                      </p>
                     </div>
                   </Popup>
                 </Circle>
-              </>
-            )}
+              )}
 
-            {/* Vegetation visualization */}
-            {activeLayers.vegetation && nasaData.vegetation.ndvi?.current && (
+            {/* Vegetation */}
+            {activeLayers.vegetation && nasaData?.vegetation?.ndvi?.current && (
               <Circle
                 center={mapCenter}
                 radius={3000}
@@ -322,52 +482,62 @@ const DigitalTwin = () => {
                   <div>
                     <h4>Vegetation Index</h4>
                     <p>NDVI: {nasaData.vegetation.ndvi.current}</p>
-                    <p>Vegetation Health: {parseFloat(nasaData.vegetation.ndvi.current) > 0.5 ? 'Good' : 'Moderate'}</p>
                   </div>
                 </Popup>
               </Circle>
             )}
 
-            {/* Precipitation visualization */}
-            {activeLayers.precipitation && nasaData.precipitation.current?.value && (
-              <Circle
-                center={mapCenter}
-                radius={7000}
-                fillColor="#3b82f6"
-                fillOpacity={0.2}
-                color="#2563eb"
-                weight={2}
-                dashArray="5, 5"
-              >
-                <Popup>
-                  <div>
-                    <h4>Precipitation Zone</h4>
-                    <p>Daily Precipitation: {nasaData.precipitation.current.value} mm/day</p>
-                    <p>Source: GPM IMERG</p>
-                  </div>
-                </Popup>
-              </Circle>
-            )}
+            {/* Precipitation */}
+            {activeLayers.precipitation &&
+              nasaData?.precipitation?.current?.value && (
+                <Circle
+                  center={mapCenter}
+                  radius={7000}
+                  fillColor="#3b82f6"
+                  fillOpacity={0.2}
+                  color="#2563eb"
+                  weight={2}
+                  dashArray="5,5"
+                >
+                  <Popup>
+                    <div>
+                      <h4>Precipitation Zone</h4>
+                      <p>
+                        Daily Precipitation:{" "}
+                        {nasaData.precipitation.current.value} mm/day
+                      </p>
+                    </div>
+                  </Popup>
+                </Circle>
+              )}
 
-            {/* Air Quality visualization */}
-            {activeLayers.airquality && nasaData.airQuality.current?.aqi && (
+            {/* Air Quality */}
+            {activeLayers.airquality && nasaData?.airQuality?.current?.aqi && (
               <Circle
                 center={mapCenter}
                 radius={4000}
-                fillColor={nasaData.airQuality.current.aqi > 100 ? "#ef4444" : nasaData.airQuality.current.aqi > 50 ? "#f59e0b" : "#22c55e"}
+                fillColor={
+                  nasaData.airQuality.current.aqi > 100
+                    ? "#ef4444"
+                    : nasaData.airQuality.current.aqi > 50
+                    ? "#f59e0b"
+                    : "#22c55e"
+                }
                 fillOpacity={0.25}
-                color={nasaData.airQuality.current.aqi > 100 ? "#dc2626" : nasaData.airQuality.current.aqi > 50 ? "#d97706" : "#16a34a"}
+                color="#000"
                 weight={2}
               >
                 <Popup>
                   <div>
                     <h4>Air Quality Zone</h4>
                     <p>AQI: {nasaData.airQuality.current.aqi}</p>
-                    <p>Quality: {nasaData.airQuality.current.aqi > 100 ? 'Unhealthy' : nasaData.airQuality.current.aqi > 50 ? 'Moderate' : 'Good'}</p>
                   </div>
                 </Popup>
               </Circle>
             )}
+
+            {/* Elevation Overlay - This will now work with your generated files */}
+            <ElevationOverlay isVisible={activeLayers.elevation} />
           </MapContainer>
         </MapWrapper>
 
@@ -378,7 +548,7 @@ const DigitalTwin = () => {
         >
           <PanelTitle>Map Layers</PanelTitle>
           <LayerControl>
-            {layers.map(layer => (
+            {layers.map((layer) => (
               <LayerItem
                 key={layer.key}
                 active={activeLayers[layer.key]}
@@ -396,32 +566,33 @@ const DigitalTwin = () => {
                       {layer.value} {layer.unit}
                     </LayerValue>
                   )}
-                  <LayerDescription>
-                    {layer.description}
-                  </LayerDescription>
-                  <DataSource>
-                    Source: {layer.source}
-                  </DataSource>
+                  <LayerDescription>{layer.description}</LayerDescription>
+                  <DataSource>Source: {layer.source}</DataSource>
                 </div>
               </LayerItem>
             ))}
           </LayerControl>
 
-          <PanelTitle>Real-time Data Status</PanelTitle>
-          <div style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4' }}>
-            <div style={{ marginBottom: '0.4rem' }}>
-              📡 <strong>{selectedCity?.name || 'Default Location'}</strong> - {selectedCity?.country || 'Unknown'}
-            </div>
-            <div style={{ marginBottom: '0.4rem' }}>
-              📍 Coordinates: {mapCenter[0].toFixed(4)}°, {mapCenter[1].toFixed(4)}°
-            </div>
-            <div style={{ marginBottom: '0.4rem' }}>
-              ⏰ Last Updated: {new Date().toLocaleTimeString()}
-            </div>
-            <div>
-              🛰️ Data Sources: NASA POWER, GPM, MODIS, TEMPO
-            </div>
-          </div>
+          {/* Elevation Legend - Only show when elevation layer is active */}
+          {activeLayers.elevation && (
+            <ElevationLegend>
+              <LegendTitle>Elevation Legend</LegendTitle>
+              <LegendGradient />
+              <LegendLabels>
+                <span>0-15m (Low)</span>
+                <span>15-85m (High)</span>
+              </LegendLabels>
+              <div
+                style={{
+                  fontSize: "0.7rem",
+                  color: "#64748b",
+                  marginTop: "0.5rem",
+                }}
+              >
+                Blue: Low areas, Red: High areas
+              </div>
+            </ElevationLegend>
+          )}
         </ControlPanel>
       </ContentGrid>
     </Container>

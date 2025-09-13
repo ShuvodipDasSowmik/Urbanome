@@ -6,7 +6,6 @@ import {
   TileLayer,
   Marker,
   Popup,
-  Circle,
   ImageOverlay,
   useMap,
 } from "react-leaflet";
@@ -274,6 +273,43 @@ function ElevationOverlay({ isVisible }) {
   );
 }
 
+// New LST overlay component (renders dhaka_lst_overlay.png when temperature layer active)
+function LSTOverlay({ isVisible }) {
+  const [bounds, setBounds] = useState(null);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    fetch("/data/dhaka_elevation_bounds.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setBounds([
+          [data.south, data.west], // SW corner
+          [data.north, data.east], // NE corner
+        ]);
+      })
+      .catch((error) => {
+        console.error("Error loading LST bounds:", error);
+        // fallback approximate Dhaka bounds
+        setBounds([
+          [23.4, 90.36],
+          [23.6, 90.6],
+        ]);
+      });
+  }, [isVisible]);
+
+  if (!isVisible || !bounds) return null;
+
+  return (
+    <ImageOverlay
+      url="/data/dhaka_lst_overlay.png"
+      bounds={bounds}
+      opacity={0.8}
+      zIndex={510}
+      attribution="LST overlay (processed)"
+    />
+  );
+}
+
 //**************************************************** */
 // Similarly onno layers add kora jabe
 
@@ -445,99 +481,11 @@ const DigitalTwin = () => {
               </Popup>
             </Marker>
 
-            {/* Temperature */}
-            {activeLayers.temperature &&
-              nasaData?.temperature?.current?.value && (
-                <Circle
-                  center={mapCenter}
-                  radius={5000}
-                  fillColor="#ef4444"
-                  fillOpacity={0.3}
-                  color="#ef4444"
-                  weight={2}
-                >
-                  <Popup>
-                    <div>
-                      <h4>Temperature Zone</h4>
-                      <p>
-                        Surface Temperature:{" "}
-                        {nasaData.temperature.current.value}°C
-                      </p>
-                    </div>
-                  </Popup>
-                </Circle>
-              )}
-
-            {/* Vegetation */}
-            {activeLayers.vegetation && nasaData?.vegetation?.ndvi?.current && (
-              <Circle
-                center={mapCenter}
-                radius={3000}
-                fillColor="#22c55e"
-                fillOpacity={0.4}
-                color="#16a34a"
-                weight={2}
-              >
-                <Popup>
-                  <div>
-                    <h4>Vegetation Index</h4>
-                    <p>NDVI: {nasaData.vegetation.ndvi.current}</p>
-                  </div>
-                </Popup>
-              </Circle>
-            )}
-
-            {/* Precipitation */}
-            {activeLayers.precipitation &&
-              nasaData?.precipitation?.current?.value && (
-                <Circle
-                  center={mapCenter}
-                  radius={7000}
-                  fillColor="#3b82f6"
-                  fillOpacity={0.2}
-                  color="#2563eb"
-                  weight={2}
-                  dashArray="5,5"
-                >
-                  <Popup>
-                    <div>
-                      <h4>Precipitation Zone</h4>
-                      <p>
-                        Daily Precipitation:{" "}
-                        {nasaData.precipitation.current.value} mm/day
-                      </p>
-                    </div>
-                  </Popup>
-                </Circle>
-              )}
-
-            {/* Air Quality */}
-            {activeLayers.airquality && nasaData?.airQuality?.current?.aqi && (
-              <Circle
-                center={mapCenter}
-                radius={4000}
-                fillColor={
-                  nasaData.airQuality.current.aqi > 100
-                    ? "#ef4444"
-                    : nasaData.airQuality.current.aqi > 50
-                    ? "#f59e0b"
-                    : "#22c55e"
-                }
-                fillOpacity={0.25}
-                color="#000"
-                weight={2}
-              >
-                <Popup>
-                  <div>
-                    <h4>Air Quality Zone</h4>
-                    <p>AQI: {nasaData.airQuality.current.aqi}</p>
-                  </div>
-                </Popup>
-              </Circle>
-            )}
-
             {/* Elevation Overlay - This will now work with your generated files */}
             <ElevationOverlay isVisible={activeLayers.elevation} />
+
+            {/* Land Surface Temperature Overlay */}
+            <LSTOverlay isVisible={activeLayers.temperature} />
           </MapContainer>
         </MapWrapper>
 
@@ -600,3 +548,4 @@ const DigitalTwin = () => {
 };
 
 export default DigitalTwin;
+       

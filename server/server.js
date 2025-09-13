@@ -8,8 +8,6 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 // Import custom modules
-const logger = require('./utils/logger');
-const errorHandler = require('./middleware/errorHandler');
 
 // Import routes
 const nasaRoutes = require('./routes/nasaRoutes');
@@ -71,14 +69,7 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Logging
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('combined', {
-    stream: {
-      write: (message) => logger.info(message.trim())
-    }
-  }));
-}
+
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -151,46 +142,14 @@ app.use('*', (req, res) => {
   });
 });
 
-// Global error handler
-app.use(errorHandler);
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  logger.info('SIGTERM signal received: closing HTTP server');
-  server.close(() => {
-    logger.info('HTTP server closed');
-    process.exit(0);
-  });
-});
-
-process.on('SIGINT', () => {
-  logger.info('SIGINT signal received: closing HTTP server');
-  server.close(() => {
-    logger.info('HTTP server closed');
-    process.exit(0);
-  });
-});
-
-// Unhandled promise rejections
-process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
-  process.exit(1);
-});
-
-// Uncaught exceptions
-process.on('uncaughtException', (error) => {
-  logger.error('Uncaught Exception:', error);
-  process.exit(1);
-});
 
 // Start server
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
-  logger.info(`🚀 NASA Healthy Cities Server running on port ${PORT}`);
-  logger.info(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
-  logger.info('🌍 Ready to serve NASA Earth observation data!');
-  logger.info(`🔗 API Documentation: http://localhost:${PORT}/api`);
-  logger.info('✅ Server startup complete - No database required!');
+  console.log(`🚀 NASA Healthy Cities Server running on port ${PORT}`);
+  console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log('🌍 Ready to serve NASA Earth observation data!');
+  console.log(`🔗 API Documentation: http://localhost:${PORT}/api`);
 });
 
 module.exports = app;

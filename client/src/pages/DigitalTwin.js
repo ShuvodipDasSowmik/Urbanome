@@ -21,6 +21,7 @@ import {
 import { useCityData } from "../context/CityDataContext";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import "leaflet/dist/leaflet.css";
+import VegetationLegend from "../components/VegetationLegend";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -224,35 +225,25 @@ function MapController({ center, zoom }) {
   return null;
 }
 
-// component for elevation overlay
+// Elevation overlay
 function ElevationOverlay({ isVisible }) {
   const [bounds, setBounds] = useState(null);
   const [elevationStats, setElevationStats] = useState({ min: 0, max: 0 });
 
   useEffect(() => {
-    // stored in public/data so that it's accessible directly. data here is bound eg. where to place the overlay
     fetch("/data/dhaka_elevation_bounds.json")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Elevation bounds loaded:", data);
         setBounds([
-          [data.south, data.west], // SW corner
-          [data.north, data.east], // NE corner
+          [data.south, data.west],
+          [data.north, data.east],
         ]);
-
-        // estimate elevation stats based on typical Dhaka topography. there is also another file in data folder named
-        //dhaka_elevation_metadata.json which has more detailed stats if needed.
-        setElevationStats({
-          min: 2,
-          max: 85, // hard coded, we can extract from metadata file if needed
-        });
+        setElevationStats({ min: 2, max: 85 });
       })
-      .catch((error) => {
-        console.error("Error loading elevation bounds:", error);
-        // hard coded if fetch fails
+      .catch(() => {
         setBounds([
-          [23.4, 90.36], // SW corner (approx Dhaka bounds)
-          [23.6, 90.6], // NE corner (approx Dhaka bounds)
+          [23.4, 90.36],
+          [23.6, 90.6],
         ]);
         setElevationStats({ min: 2, max: 85 });
       });
@@ -261,19 +252,17 @@ function ElevationOverlay({ isVisible }) {
   if (!isVisible || !bounds) return null;
 
   return (
-    <>
-      <ImageOverlay
-        url="/data/dhaka_elevation_overlay.png"
-        bounds={bounds}
-        opacity={0.65}
-        zIndex={500}
-        attribution="NASA SRTM Elevation Data"
-      />
-    </>
+    <ImageOverlay
+      url="/data/dhaka_elevation_overlay.png"
+      bounds={bounds}
+      opacity={0.65}
+      zIndex={500}
+      attribution="NASA SRTM Elevation Data"
+    />
   );
 }
 
-// New LST overlay component (renders dhaka_lst_overlay.png when temperature layer active)
+// Land Surface Temperature overlay
 function LSTOverlay({ isVisible }) {
   const [bounds, setBounds] = useState(null);
 
@@ -283,13 +272,11 @@ function LSTOverlay({ isVisible }) {
       .then((response) => response.json())
       .then((data) => {
         setBounds([
-          [data.south, data.west], // SW corner
-          [data.north, data.east], // NE corner
+          [data.south, data.west],
+          [data.north, data.east],
         ]);
       })
-      .catch((error) => {
-        console.error("Error loading LST bounds:", error);
-        // fallback approximate Dhaka bounds
+      .catch(() => {
         setBounds([
           [23.4, 90.36],
           [23.6, 90.6],
@@ -310,8 +297,43 @@ function LSTOverlay({ isVisible }) {
   );
 }
 
-//**************************************************** */
-// Similarly onno layers add kora jabe
+// Vegetation (Land Cover) overlay
+function VegetationOverlay({ isVisible }) {
+  const [bounds, setBounds] = useState(null);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    fetch("/data/dhaka_elevation_bounds.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setBounds([
+          [data.south, data.west],
+          [data.north, data.east],
+        ]);
+      })
+      .catch(() => {
+        setBounds([
+          [23.4, 90.36],
+          [23.6, 90.6],
+        ]);
+      });
+  }, [isVisible]);
+
+  if (!isVisible || !bounds) return null;
+
+  return (
+    <ImageOverlay
+      url="/data/dhaka_landcover.png"
+      bounds={[
+                    [23.514644467623427, 89.993267809818], // SW corner
+                    [24.044668432420007, 90.52169954853196] // NE corner
+                ]}
+      opacity={0.5}
+      zIndex={520}
+      attribution="Dhaka Land Cover (processed)"
+    />
+  );
+}
 
 const DigitalTwin = () => {
   const { selectedCity, nasaData, loading } = useCityData();
@@ -332,31 +354,25 @@ const DigitalTwin = () => {
     }));
   };
 
-  // Use coordinates directly - assuming they are in [latitude, longitude] format
   const mapCenter = selectedCity?.coordinates
     ? selectedCity.coordinates
-    : [23.8103, 90.4125]; // Dhaka coordinates [latitude, longitude]
+    : [23.8103, 90.4125]; // Dhaka default
 
-  // Reasonable zoom level for city view
   const mapZoom = 11;
 
-  // Handle map creation
   const handleMapCreated = (mapInstance) => {
     mapRef.current = mapInstance;
-    // Ensure proper sizing after creation
     setTimeout(() => {
       mapInstance.invalidateSize();
     }, 50);
   };
 
   useEffect(() => {
-    // Additional invalidation after component mounts
     const timer = setTimeout(() => {
       if (mapRef.current) {
         mapRef.current.invalidateSize();
       }
     }, 300);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -384,7 +400,7 @@ const DigitalTwin = () => {
       value: nasaData?.vegetation?.ndvi?.current || "--",
       unit: "NDVI",
       description: "Vegetation health and density measurement",
-      source: "MODIS/Landsat",
+      source: "Sentinel-2",
     },
     {
       key: "precipitation",
@@ -459,7 +475,7 @@ const DigitalTwin = () => {
           >
             <MapController center={mapCenter} zoom={mapZoom} />
 
-            {/* Only Carto Voyager basemap */}
+            {/* Basemap */}
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -481,11 +497,11 @@ const DigitalTwin = () => {
               </Popup>
             </Marker>
 
-            {/* Elevation Overlay - This will now work with your generated files */}
+            {/* Overlays */}
             <ElevationOverlay isVisible={activeLayers.elevation} />
-
-            {/* Land Surface Temperature Overlay */}
             <LSTOverlay isVisible={activeLayers.temperature} />
+            <VegetationOverlay isVisible={activeLayers.vegetation} />
+            <VegetationLegend active={activeLayers.vegetation} />
           </MapContainer>
         </MapWrapper>
 
@@ -521,7 +537,7 @@ const DigitalTwin = () => {
             ))}
           </LayerControl>
 
-          {/* Elevation Legend - Only show when elevation layer is active */}
+          {/* Elevation Legend */}
           {activeLayers.elevation && (
             <ElevationLegend>
               <LegendTitle>Elevation Legend</LegendTitle>
@@ -548,4 +564,3 @@ const DigitalTwin = () => {
 };
 
 export default DigitalTwin;
-       

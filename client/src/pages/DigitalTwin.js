@@ -23,6 +23,7 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import "leaflet/dist/leaflet.css";
 import VegetationLegend from "../components/VegetationLegend";
 import LSTLegend from "../components/LSTLegend";
+import ElevationLegend from "../components/ElevationLegend";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -156,13 +157,13 @@ const DataSource = styled.div`
   display: inline-block;
 `;
 
-const ElevationLegend = styled.div`
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-`;
+// const ElevationLegend = styled.div`
+//   background: white;
+//   border-radius: 8px;
+//   padding: 1rem;
+//   margin-top: 1rem;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+// `;
 
 const LegendTitle = styled.h4`
   margin: 0 0 0.5rem 0;
@@ -337,7 +338,7 @@ function VegetationOverlay({ isVisible }) {
 }
 
 const DigitalTwin = () => {
-  const { selectedCity, nasaData, loading } = useCityData();
+  const { selectedCity, nasaData } = useCityData();
   const mapRef = useRef(null);
   const [activeLayers, setActiveLayers] = useState({
     satellite: true,
@@ -354,6 +355,22 @@ const DigitalTwin = () => {
       [layer]: !prev[layer],
     }));
   };
+  // const { selectedCity } = useCityData();
+  // const [nasaData, setNasaData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/air_quality_frontend_data.json')
+      .then(res => res.json())
+      .then(data => {
+        setNasaData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error loading JSON:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const mapCenter = selectedCity?.coordinates
     ? selectedCity.coordinates
@@ -379,8 +396,8 @@ const DigitalTwin = () => {
 
   const layers = [
     {
-      key: "satellite",
-      label: "Satellite Imagery",
+      key: 'satellite',
+      label: 'Satellite Imagery',
       icon: <FiMap size={18} />,
       description: "High-resolution satellite imagery",
       source: "Carto Voyager",
@@ -429,6 +446,7 @@ const DigitalTwin = () => {
       source: "NASA SRTM",
     },
   ];
+
 
   if (loading) {
     return (
@@ -484,6 +502,15 @@ const DigitalTwin = () => {
               maxZoom={20}
             />
 
+            {/* Satellite layer overlay */}
+            {/* {activeLayers.satellite && (
+              <TileLayer
+                attribution='&copy; <a href="https://www.esri.com/">Esri</a>'
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                opacity={0.7}
+              />
+            )} */}
+
             {/* City marker */}
             <Marker position={mapCenter}>
               <Popup>
@@ -504,6 +531,7 @@ const DigitalTwin = () => {
             <VegetationOverlay isVisible={activeLayers.vegetation} />
             <VegetationLegend active={activeLayers.vegetation} />
             <LSTLegend active={activeLayers.temperature} />
+            <ElevationLegend active={activeLayers.elevation} />
           </MapContainer>
         </MapWrapper>
 
@@ -539,26 +567,7 @@ const DigitalTwin = () => {
             ))}
           </LayerControl>
 
-          {/* Elevation Legend */}
-          {activeLayers.elevation && (
-            <ElevationLegend>
-              <LegendTitle>Elevation Legend</LegendTitle>
-              <LegendGradient />
-              <LegendLabels>
-                <span>0-15m (Low)</span>
-                <span>15-85m (High)</span>
-              </LegendLabels>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: "#64748b",
-                  marginTop: "0.5rem",
-                }}
-              >
-                Blue: Low areas, Red: High areas
-              </div>
-            </ElevationLegend>
-          )}
+
         </ControlPanel>
       </ContentGrid>
     </Container>

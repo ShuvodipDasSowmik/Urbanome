@@ -22,6 +22,7 @@ import { useCityData } from "../context/CityDataContext";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import "leaflet/dist/leaflet.css";
 import VegetationLegend from "../components/VegetationLegend";
+import LSTLegend from "../components/LSTLegend";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -502,6 +503,7 @@ const DigitalTwin = () => {
             <LSTOverlay isVisible={activeLayers.temperature} />
             <VegetationOverlay isVisible={activeLayers.vegetation} />
             <VegetationLegend active={activeLayers.vegetation} />
+            <LSTLegend active={activeLayers.temperature} />
           </MapContainer>
         </MapWrapper>
 

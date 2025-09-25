@@ -17,6 +17,8 @@ const interventionRoutes = require('./routes/interventionRoutes');
 const cityRoutes = require('./routes/cityRoutes');
 const analysisRoutes = require('./routes/analysisRoutes');
 
+const airQualityRoutes = require('./routes/airQualityRoutes');
+
 // Load environment variables
 dotenv.config();
 
@@ -132,6 +134,8 @@ app.use('/api/nasa', nasaRoutes);
 app.use('/api/interventions', interventionRoutes);
 app.use('/api/cities', cityRoutes);
 app.use('/api/analysis', analysisRoutes);
+
+app.use('/api/air', airQualityRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {

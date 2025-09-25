@@ -146,7 +146,7 @@ const DataSource = styled.div`
 `;
 
 const DigitalTwin = () => {
-  const { selectedCity, nasaData, loading } = useCityData();
+  // const { selectedCity, nasaData, loading } = useCityData();
   const [activeLayers, setActiveLayers] = useState({
     satellite: true,
     temperature: false,
@@ -161,12 +161,32 @@ const DigitalTwin = () => {
       [layer]: !prev[layer]
     }));
   };
+  const { selectedCity } = useCityData();
+  const [nasaData, setNasaData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Default coordinates (London) if no city is selected
-  const mapCenter = selectedCity?.coordinates ? 
-    [selectedCity.coordinates[1], selectedCity.coordinates[0]] : 
-    [51.505, -0.09];
-  
+  useEffect(() => {
+    fetch('/air_quality_frontend_data.json')
+      .then(res => res.json())
+      .then(data => {
+        setNasaData(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error loading JSON:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  // const mapCenter = selectedCity?.coordinates ?
+  //   [selectedCity.coordinates[0], selectedCity.coordinates[1]] :
+  //   [23.8103, 90.4125];
+
+
+  const mapCenter = nasaData?.airQuality?.location
+    ? [nasaData.airQuality.location.latitude, nasaData.airQuality.location.longitude]
+    : [23.8103, 90.4125];
+
   const mapZoom = 11;
 
   // Custom marker for temperature visualization
@@ -181,50 +201,51 @@ const DigitalTwin = () => {
   };
 
   const layers = [
-    { 
-      key: 'satellite', 
-      label: 'Satellite Imagery', 
+    {
+      key: 'satellite',
+      label: 'Satellite Imagery',
       icon: <FiMap size={18} />,
       description: 'High-resolution satellite imagery',
       source: 'Landsat/Sentinel'
     },
-    { 
-      key: 'temperature', 
-      label: 'Land Surface Temperature', 
+    {
+      key: 'temperature',
+      label: 'Land Surface Temperature',
       icon: <FiThermometer size={18} />,
-      value: nasaData.temperature.current?.value || '--',
+      value: nasaData?.temperature?.current?.value,
       unit: '°C',
       description: 'Surface temperature from thermal infrared sensors',
-      source: 'MODIS/VIIRS'
+      source: 'NASA MODIS/VIIRS'
     },
-    { 
-      key: 'vegetation', 
-      label: 'Vegetation Index (NDVI)', 
+    {
+      key: 'vegetation',
+      label: 'Vegetation Index (NDVI)',
       icon: <FiLayers size={18} />,
-      value: nasaData.vegetation.ndvi?.current || '--',
+      value: nasaData?.vegetation?.ndvi?.current,
       unit: 'NDVI',
       description: 'Vegetation health and density measurement',
       source: 'MODIS/Landsat'
     },
-    { 
-      key: 'precipitation', 
-      label: 'Precipitation (IMERG)', 
+    {
+      key: 'precipitation',
+      label: 'Precipitation (IMERG)',
       icon: <FiDroplet size={18} />,
-      value: nasaData.precipitation.current?.value || '--',
+      value: nasaData?.precipitation?.current?.value,
       unit: 'mm/day',
       description: 'Real-time precipitation measurements',
       source: 'GPM IMERG'
     },
-    { 
-      key: 'airquality', 
-      label: 'Air Quality', 
+    {
+      key: 'airquality',
+      label: 'Air Quality',
       icon: <FiActivity size={18} />,
-      value: nasaData.airQuality.current?.aqi || '--',
+      value: nasaData?.airQuality?.current?.aqi,
       unit: 'AQI',
-      description: 'Atmospheric composition and pollutant levels',
-      source: 'TEMPO'
+      description: nasaData?.airQuality?.current?.level,
+      source: nasaData?.airQuality?.current?.provider || 'TEMPO'
     }
   ];
+
 
   if (loading) {
     return (
@@ -265,7 +286,7 @@ const DigitalTwin = () => {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            
+
             {/* Satellite layer overlay */}
             {activeLayers.satellite && (
               <TileLayer
@@ -350,24 +371,38 @@ const DigitalTwin = () => {
             )}
 
             {/* Air Quality visualization */}
-            {activeLayers.airquality && nasaData.airQuality.current?.aqi && (
+            {activeLayers.airquality && nasaData?.airQuality?.current?.aqi && (
               <Circle
                 center={mapCenter}
                 radius={4000}
-                fillColor={nasaData.airQuality.current.aqi > 100 ? "#ef4444" : nasaData.airQuality.current.aqi > 50 ? "#f59e0b" : "#22c55e"}
+                fillColor={
+                  nasaData.airQuality.current.aqi > 100 ? "#ef4444" :
+                    nasaData.airQuality.current.aqi > 50 ? "#f59e0b" :
+                      "#22c55e"
+                }
                 fillOpacity={0.25}
-                color={nasaData.airQuality.current.aqi > 100 ? "#dc2626" : nasaData.airQuality.current.aqi > 50 ? "#d97706" : "#16a34a"}
+                color={
+                  nasaData.airQuality.current.aqi > 100 ? "#dc2626" :
+                    nasaData.airQuality.current.aqi > 50 ? "#d97706" :
+                      "#16a34a"
+                }
                 weight={2}
               >
                 <Popup>
                   <div>
                     <h4>Air Quality Zone</h4>
-                    <p>AQI: {nasaData.airQuality.current.aqi}</p>
-                    <p>Quality: {nasaData.airQuality.current.aqi > 100 ? 'Unhealthy' : nasaData.airQuality.current.aqi > 50 ? 'Moderate' : 'Good'}</p>
+                    <p>AQI: {nasaData.airQuality.current?.aqi}</p>
+                    <p>Level: {nasaData.airQuality.current?.level}</p>
+                    <p>PM2.5: {nasaData.airQuality.current?.pm25}</p>
+                    <p>PM1: {nasaData.airQuality.current?.pm1}</p>
+                    <p>Humidity: {nasaData.airQuality.current?.humidity}%</p>
+                    <p>Provider: {nasaData.airQuality.current?.provider || 'TEMPO'}</p>
                   </div>
                 </Popup>
               </Circle>
             )}
+
+
           </MapContainer>
         </MapWrapper>
 

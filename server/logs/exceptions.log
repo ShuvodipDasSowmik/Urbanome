@@ -1383,3 +1383,3796 @@
   version: '1.0.0',
   timestamp: '2025-08-14 03:29:31'
 }
+{
+  error: TypeError: app.use() requires a middleware function
+      at Function.use (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\node_modules\express\lib\application.js:217:11)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:5)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: app.use() requires a middleware function\n' +
+    'TypeError: app.use() requires a middleware function\n' +
+    '    at Function.use (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\node_modules\\express\\lib\\application.js:217:11)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:5)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'TypeError: app.use() requires a middleware function\n' +
+    '    at Function.use (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\node_modules\\express\\lib\\application.js:217:11)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:5)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:12:05 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 19776,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65392640,
+      heapTotal: 32759808,
+      heapUsed: 16644184,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24536.046 },
+  trace: [
+    {
+      column: 11,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\node_modules\\express\\lib\\application.js',
+      function: 'Function.use',
+      line: 217,
+      method: 'use',
+      native: false
+    },
+    {
+      column: 5,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:12:05'
+}
+{
+  error: ReferenceError: air is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:22)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: air is not defined\n' +
+    'ReferenceError: air is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:22)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: air is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:22)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:12:08 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 6656,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64839680,
+      heapTotal: 32759808,
+      heapUsed: 16891832,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24539.312 },
+  trace: [
+    {
+      column: 22,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:12:08'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:22)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:22)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:22)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:12:10 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 6116,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 67825664,
+      heapTotal: 33284096,
+      heapUsed: 14436112,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24540.843 },
+  trace: [
+    {
+      column: 22,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:12:10'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:21)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:12:13 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 22496,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65032192,
+      heapTotal: 32759808,
+      heapUsed: 16985448,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24544.39 },
+  trace: [
+    {
+      column: 21,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:12:13'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:21)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:13:40 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 20492,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64843776,
+      heapTotal: 32759808,
+      heapUsed: 17042184,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24631.578 },
+  trace: [
+    {
+      column: 21,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:13:40'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:21)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:15:04 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 15532,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64831488,
+      heapTotal: 32497664,
+      heapUsed: 16905712,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24714.921 },
+  trace: [
+    {
+      column: 21,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:15:04'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:157:21)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:157:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:16:33 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 13976,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64651264,
+      heapTotal: 33021952,
+      heapUsed: 17039696,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24804.578 },
+  trace: [
+    {
+      column: 21,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 157,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:16:33'
+}
+{
+  error: ReferenceError: airQualityRoutes is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:159:21)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: airQualityRoutes is not defined\n' +
+    'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:159:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: airQualityRoutes is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:159:21)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:17:08 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 17416,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65654784,
+      heapTotal: 32759808,
+      heapUsed: 16708552,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24838.734 },
+  trace: [
+    {
+      column: 21,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 159,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:17:08'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:17:09 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 2552,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64319488,
+      heapTotal: 32759808,
+      heapUsed: 16778424,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 24840.187 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:17:09'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:45:03 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 7960,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64663552,
+      heapTotal: 32759808,
+      heapUsed: 16721560,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26514.531 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:45:03'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:45:07 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 15628,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64749568,
+      heapTotal: 32759808,
+      heapUsed: 16677520,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26517.921 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:45:07'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:46:25 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 16500,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 67325952,
+      heapTotal: 31449088,
+      heapUsed: 21361256,
+      external: 3341975,
+      arrayBuffers: 65892
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26596.015 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:46:25'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:47:15 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 15212,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65429504,
+      heapTotal: 33284096,
+      heapUsed: 14516408,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26646.593 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:47:15'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:51:03 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 16680,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65470464,
+      heapTotal: 33021952,
+      heapUsed: 14349040,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26873.937 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:51:03'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:51:12 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 21092,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64503808,
+      heapTotal: 33021952,
+      heapUsed: 14555528,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26883.5 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:51:12'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:51:13 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 5000,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 62226432,
+      heapTotal: 33021952,
+      heapUsed: 16723616,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26884.531 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:51:13'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:51:29 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 8204,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64036864,
+      heapTotal: 32759808,
+      heapUsed: 15250680,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26899.75 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:51:29'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:51:45 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 7608,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 62124032,
+      heapTotal: 33021952,
+      heapUsed: 16783792,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26915.687 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:51:45'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:52:09 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 5700,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 61857792,
+      heapTotal: 32759808,
+      heapUsed: 16694456,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 26939.765 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:52:09'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:53:36 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 21668,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64315392,
+      heapTotal: 33021952,
+      heapUsed: 14591000,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 27026.828 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:53:36'
+}
+{
+  error: Error: Cannot find module 'node-fetch'
+  Require stack:
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js
+  - D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+      at Function._load (node:internal/modules/cjs/loader:1075:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:2:15)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  stack: "Error: Cannot find module 'node-fetch'\n" +
+    'Require stack:\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js\n' +
+    '- D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1075:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:2:15)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)',
+  exception: true,
+  date: 'Tue Aug 26 2025 01:53:37 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 20516,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 62652416,
+      heapTotal: 33021952,
+      heapUsed: 16280160,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 27028.546 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1249,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1075,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 15,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 2,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 01:53:37'
+}
+{
+  error: D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:9
+        headers: { 'Accept': 'application/json' }
+        ^^^^^^^
+  
+  SyntaxError: missing ) after argument list
+      at wrapSafe (node:internal/modules/cjs/loader:1469:18)
+      at Module._compile (node:internal/modules/cjs/loader:1491:20)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:20:26),
+  level: 'error',
+  message: 'uncaughtException: missing ) after argument list\n' +
+    'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:9\n' +
+    "      headers: { 'Accept': 'application/json' }\n" +
+    '      ^^^^^^^\n' +
+    '\n' +
+    'SyntaxError: missing ) after argument list\n' +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  stack: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:9\n' +
+    "      headers: { 'Accept': 'application/json' }\n" +
+    '      ^^^^^^^\n' +
+    '\n' +
+    'SyntaxError: missing ) after argument list\n' +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  exception: true,
+  date: 'Tue Aug 26 2025 02:05:44 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 8172,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 66277376,
+      heapTotal: 32497664,
+      heapUsed: 14845696,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 27755.265 },
+  trace: [
+    {
+      column: 18,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapSafe',
+      line: 1469,
+      method: null,
+      native: false
+    },
+    {
+      column: 20,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1491,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 26,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 20,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 02:05:44'
+}
+{
+  error: D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:8
+  const OPENAQ_API_KEY = ; // Get your API key from OpenAQ
+                         ^
+  
+  SyntaxError: Unexpected token ';'
+      at wrapSafe (node:internal/modules/cjs/loader:1469:18)
+      at Module._compile (node:internal/modules/cjs/loader:1491:20)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:20:26),
+  level: 'error',
+  message: "uncaughtException: Unexpected token ';'\n" +
+    'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8\n' +
+    'const OPENAQ_API_KEY = ; // Get your API key from OpenAQ\n' +
+    '                       ^\n' +
+    '\n' +
+    "SyntaxError: Unexpected token ';'\n" +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  stack: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8\n' +
+    'const OPENAQ_API_KEY = ; // Get your API key from OpenAQ\n' +
+    '                       ^\n' +
+    '\n' +
+    "SyntaxError: Unexpected token ';'\n" +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  exception: true,
+  date: 'Tue Aug 26 2025 12:54:29 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 20112,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64761856,
+      heapTotal: 32497664,
+      heapUsed: 16273488,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 66683.484 },
+  trace: [
+    {
+      column: 18,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapSafe',
+      line: 1469,
+      method: null,
+      native: false
+    },
+    {
+      column: 20,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1491,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 26,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 20,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 12:54:29'
+}
+{
+  error: ReferenceError: bc9104f94e89cf55c3a74a5ccbf11dd4ecb510b25dbf45779cf9718e44783025 is not defined
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:8:24)
+      at Module._compile (node:internal/modules/cjs/loader:1546:14)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:20:26),
+  level: 'error',
+  message: 'uncaughtException: bc9104f94e89cf55c3a74a5ccbf11dd4ecb510b25dbf45779cf9718e44783025 is not defined\n' +
+    'ReferenceError: bc9104f94e89cf55c3a74a5ccbf11dd4ecb510b25dbf45779cf9718e44783025 is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8:24)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  stack: 'ReferenceError: bc9104f94e89cf55c3a74a5ccbf11dd4ecb510b25dbf45779cf9718e44783025 is not defined\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8:24)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  exception: true,
+  date: 'Tue Aug 26 2025 12:54:46 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 19620,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 64446464,
+      heapTotal: 32759808,
+      heapUsed: 16767208,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 66700.453 },
+  trace: [
+    {
+      column: 24,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js',
+      function: null,
+      line: 8,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1546,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 26,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 20,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 12:54:46'
+}
+{
+  error: D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\routes\airQualityRoutes.js:8
+  const OPENAQ_API_KEY = ; // Get your API key from OpenAQ
+                         ^
+  
+  SyntaxError: Unexpected token ';'
+      at wrapSafe (node:internal/modules/cjs/loader:1469:18)
+      at Module._compile (node:internal/modules/cjs/loader:1491:20)
+      at Object..js (node:internal/modules/cjs/loader:1689:10)
+      at Module.load (node:internal/modules/cjs/loader:1318:32)
+      at Function._load (node:internal/modules/cjs/loader:1128:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+      at Module.require (node:internal/modules/cjs/loader:1340:12)
+      at require (node:internal/modules/helpers:141:16)
+      at Object.<anonymous> (D:\Web\Nasa Space App-2025\NSAC-Primary-Project\server\server.js:20:26),
+  level: 'error',
+  message: "uncaughtException: Unexpected token ';'\n" +
+    'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8\n' +
+    'const OPENAQ_API_KEY = ; // Get your API key from OpenAQ\n' +
+    '                       ^\n' +
+    '\n' +
+    "SyntaxError: Unexpected token ';'\n" +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  stack: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\routes\\airQualityRoutes.js:8\n' +
+    'const OPENAQ_API_KEY = ; // Get your API key from OpenAQ\n' +
+    '                       ^\n' +
+    '\n' +
+    "SyntaxError: Unexpected token ';'\n" +
+    '    at wrapSafe (node:internal/modules/cjs/loader:1469:18)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1491:20)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1689:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1318:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1128:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1340:12)\n' +
+    '    at require (node:internal/modules/helpers:141:16)\n' +
+    '    at Object.<anonymous> (D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js:20:26)',
+  exception: true,
+  date: 'Tue Aug 26 2025 12:54:51 GMT+0600 (Bangladesh Standard Time)',
+  process: {
+    pid: 1436,
+    uid: null,
+    gid: null,
+    cwd: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v22.11.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js'
+    ],
+    memoryUsage: {
+      rss: 65900544,
+      heapTotal: 33021952,
+      heapUsed: 15795904,
+      external: 3341975,
+      arrayBuffers: 65852
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 66705.265 },
+  trace: [
+    {
+      column: 18,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapSafe',
+      line: 1469,
+      method: null,
+      native: false
+    },
+    {
+      column: 20,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1491,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1689,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1318,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1128,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 315,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 218,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1340,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 141,
+      method: null,
+      native: false
+    },
+    {
+      column: 26,
+      file: 'D:\\Web\\Nasa Space App-2025\\NSAC-Primary-Project\\server\\server.js',
+      function: null,
+      line: 20,
+      method: null,
+      native: false
+    }
+  ],
+  service: 'nasa-healthy-cities',
+  version: '1.0.0',
+  timestamp: '2025-08-26 12:54:51'
+}

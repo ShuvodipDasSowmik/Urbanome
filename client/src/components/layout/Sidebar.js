@@ -35,6 +35,7 @@ const SidebarLink = styled(NavLink)`
   transition: all 0.2s;
 
   &:hover {
+    text-decoration: none;
     background-color: rgba(37, 99, 235, 0.1);
     color: #2563eb;
   }

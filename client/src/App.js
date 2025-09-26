@@ -38,11 +38,8 @@ const MainContent = styled.div`
 
 const ContentArea = styled.main`
   flex: 1;
-  padding: 2rem;
   overflow-y: auto;
   background: rgba(255, 255, 255, 0.95);
-  margin: 1rem;
-  border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 `;

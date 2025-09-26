@@ -106,7 +106,7 @@
     }
   },
   "data_source": {
-    "satellite": "ECOSTRESS/MODIS",
+    "satellite": "ECOSTRESS",
     "temporal_resolution": "Daily to weekly",
     "spatial_resolution": "70m to 1km",
     "processing_date": "2025",

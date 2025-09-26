@@ -130,10 +130,15 @@ def merge_and_clip(tif_files, geojson_path, output_dir, out_tif_name='dhaka_LST_
 
 def main(argv):
     # Defaults based on workspace content
-    raw_dir = 'data-processing/raw'
+    raw_dir = 'data-processing/raw/LST'
     tif_basenames = [
-        'ECO_L2T_LSTE.002_LST_doy2025006230436_aid0001_45N.tif',
-        'ECO_L2T_LSTE.002_LST_doy2025004145336_aid0001_45N.tif'
+        'ECO_L2T_LSTE.002_LST_doy2025092040705_aid0001_45N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025092040757_aid0001_45N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025092040757_aid0001_46N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025093130909_aid0001_45N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025134113354_aid0001_45N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025004145336_aid0001_45N.tif',
+        'ECO_L2T_LSTE.002_LST_doy2025006230436_aid0001_45N.tif'
     ]
     # Default to files inside raw/
     tif_files = [os.path.join(raw_dir, b) for b in tif_basenames]

@@ -51,7 +51,6 @@ function App() {
         <Router>
           <GlobalStyles />
           <AppContainer>
-            <Navbar />
             <MainContent>
               <Sidebar />
               <ContentArea>

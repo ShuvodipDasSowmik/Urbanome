@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiMapPin, FiThermometer, FiTrendingUp, FiHelpCircle } from 'react-icons/fi';
+import { FiX, FiMapPin, FiThermometer, FiTrendingUp, FiHelpCircle, FiDownload } from 'react-icons/fi';
 import { MdNature } from 'react-icons/md';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { generateAnalysisPDF } from '../utils/pdfGenerator';
 
 // Styled Components
 const Overlay = styled(motion.div)`
@@ -23,12 +24,13 @@ const Overlay = styled(motion.div)`
 const Modal = styled(motion.div)`
   background: white;
   border-radius: 20px;
-  width: 90%;
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1200px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: relative;
+  overflow-x: hidden;
 `;
 
 const Header = styled.div`
@@ -40,6 +42,12 @@ const Header = styled.div`
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border-radius: 20px 20px 0 0;
+`;
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Title = styled.h2`
@@ -59,6 +67,31 @@ const CloseButton = styled.button`
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+const DownloadButton = styled(motion.button)`
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 
@@ -148,7 +181,7 @@ const HintIcon = styled.div`
   &:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-80%);
   }
 `;
 
@@ -316,8 +349,9 @@ const COLORS = {
     success: '#22c55e'
 };
 
-const AnalysisModal = ({ isOpen, onClose, isLoading, data }) => {
+const AnalysisModal = ({ isOpen, onClose, isLoading, data, coordinates }) => {
     const [displayData, setDisplayData] = useState(null);
+    const [isDownloading, setIsDownloading] = useState(false);
 
     useEffect(() => {
         if (data && !isLoading) {
@@ -325,6 +359,20 @@ const AnalysisModal = ({ isOpen, onClose, isLoading, data }) => {
             setDisplayData(data);
         }
     }, [data, isLoading]);
+
+    const handleDownloadPDF = async () => {
+        if (!displayData) return;
+        
+        setIsDownloading(true);
+        try {
+            await generateAnalysisPDF(displayData, coordinates);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            alert('Error generating PDF. Please try again.');
+        } finally {
+            setIsDownloading(false);
+        }
+    };
 
     const formatValue = (value, unit = '') => {
         if (value === null || value === undefined) return 'N/A';
@@ -902,9 +950,22 @@ const AnalysisModal = ({ isOpen, onClose, isLoading, data }) => {
                             <Title>
                                 {isLoading ? 'Analyzing Current Situation...' : 'Environmental Analysis Results'}
                             </Title>
-                            <CloseButton onClick={onClose}>
-                                <FiX size={20} />
-                            </CloseButton>
+                            <HeaderActions>
+                                {!isLoading && displayData && (
+                                    <DownloadButton
+                                        onClick={handleDownloadPDF}
+                                        disabled={isDownloading}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        <FiDownload size={16} />
+                                        {isDownloading ? 'Generating...' : 'Download PDF'}
+                                    </DownloadButton>
+                                )}
+                                <CloseButton onClick={onClose}>
+                                    <FiX size={20} />
+                                </CloseButton>
+                            </HeaderActions>
                         </Header>
 
                         <Content>

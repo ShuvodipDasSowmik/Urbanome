@@ -61,10 +61,8 @@ const Subtitle = styled.p`
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 1rem;
   flex: 1;
-  padding: 0 2rem 2rem;
-  height: calc(100vh - 120px);
+  height: 100vh
   min-height: 600px;
 `;
 
@@ -395,40 +393,38 @@ const DigitalTwin = () => {
   }, []);
 
   const layers = [
-    {
-      key: 'satellite',
-      label: 'Satellite Imagery',
-      icon: <FiMap size={18} />,
-      description: "High-resolution satellite imagery",
-      source: "Carto Voyager",
-    },
+    // {
+    //   key: 'satellite',
+    //   label: 'Satellite Imagery',
+    //   icon: <FiMap size={18} />,
+    //   description: "High-resolution satellite imagery",
+    //   source: "Carto Voyager",
+    // },
     {
       key: "temperature",
       label: "Land Surface Temperature",
       icon: <FiThermometer size={18} />,
-      value: nasaData?.temperature?.current?.value || "--",
       unit: "°C",
       description: "Surface temperature from thermal infrared sensors",
-      source: "MODIS/VIIRS",
+      source: "ECOSTRESS [ECO_L2T_LSTE]",
     },
     {
       key: "vegetation",
       label: "Vegetation Index (NDVI)",
       icon: <FiLayers size={18} />,
-      value: nasaData?.vegetation?.ndvi?.current || "--",
       unit: "NDVI",
       description: "Vegetation health and density measurement",
       source: "Sentinel-2",
     },
-    {
-      key: "precipitation",
-      label: "Precipitation (IMERG)",
-      icon: <FiDroplet size={18} />,
-      value: nasaData?.precipitation?.current?.value || "--",
-      unit: "mm/day",
-      description: "Real-time precipitation measurements",
-      source: "GPM IMERG",
-    },
+    // {
+    //   key: "precipitation",
+    //   label: "Precipitation (IMERG)",
+    //   icon: <FiDroplet size={18} />,
+    //   value: nasaData?.precipitation?.current?.value || "--",
+    //   unit: "mm/day",
+    //   description: "Real-time precipitation measurements",
+    //   source: "GPM IMERG",
+    // },
     {
       key: "airquality",
       label: "Air Quality",
@@ -471,12 +467,12 @@ const DigitalTwin = () => {
 
   return (
     <Container>
-      <Header>
+      {/* <Header>
         <Title>City Digital Twin</Title>
         <Subtitle>
           Interactive visualization of NASA Earth observation data
         </Subtitle>
-      </Header>
+      </Header> */}
 
       <ContentGrid>
         <MapWrapper

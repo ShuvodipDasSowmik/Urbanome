@@ -28,7 +28,7 @@ const SidebarLink = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.5rem;
   color: #4b5563;
   text-decoration: none;
   border-radius: 10px;

@@ -24,7 +24,6 @@ import { formatBDT, formatBDTCompact } from "../utils/currency";
 import axios from "axios";
 
 const Container = styled.div`
-  padding: 2rem;
   min-height: 100vh;
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
 `;
@@ -48,8 +47,7 @@ const Subtitle = styled.p`
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 350px;
-  gap: 2rem;
-  height: 80vh;
+  height: 100vh;
 `;
 
 const MapWrapper = styled.div`
@@ -651,11 +649,6 @@ const InterventionPlanner = () => {
 
   return (
     <Container>
-      <Header>
-        <Title>Intervention Planner</Title>
-        <Subtitle>Design nature-based solutions for urban challenges</Subtitle>
-      </Header>
-
       <ContentGrid>
         {/* MAP */}
         <MapWrapper>

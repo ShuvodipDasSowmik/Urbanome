@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiTrendingUp, FiDollarSign, FiCalendar, FiHelpCircle, FiDroplet, FiThermometer } from 'react-icons/fi';
+import { FiX, FiTrendingUp, FiDollarSign, FiCalendar, FiHelpCircle, FiDroplet, FiThermometer, FiDownload } from 'react-icons/fi';
 import { MdNature, MdAir, MdWater, MdSolarPower } from 'react-icons/md';
 import { formatBDT, formatBDTCompact } from '../utils/currency';
+import { generateInterventionPDF } from '../utils/pdfGenerator';
 import {
     LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid,
     Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadialBarChart, RadialBar,
@@ -34,6 +35,7 @@ const Modal = styled(motion.div)`
   overflow-y: auto;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: relative;
+  overflow-x: hidden;
 `;
 
 const Header = styled.div`
@@ -65,6 +67,37 @@ const CloseButton = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.2);
   }
+`;
+
+const DownloadButton = styled(motion.button)`
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Content = styled.div`
@@ -411,24 +444,47 @@ const COLORS = {
     purple: '#8b5cf6'
 };
 
-const InterventionResultsModal = ({ isOpen, onClose, results }) => {
+const InterventionResultsModal = ({ isOpen, onClose, results, interventionName = 'Intervention' }) => {
     const [activeTab, setActiveTab] = useState('summary');
+    const [isDownloading, setIsDownloading] = useState(false);
 
     if (!results) return null;
 
     // Debug log to see data structure
     console.log('Modal received results:', results);
 
+    const handleDownloadPDF = async () => {
+        setIsDownloading(true);
+        try {
+            await generateInterventionPDF(results, interventionName);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            alert('Error generating PDF. Please try again.');
+        } finally {
+            setIsDownloading(false);
+        }
+    };
+
     const formatCurrency = (value) => {
         return formatBDTCompact(value, true); // Use compact format for better display in cards
     };
 
-    const formatNumber = (value, decimals = 1) => {
+    const formatNumber = (value, decimals = 2) => {
         return parseFloat(value).toFixed(decimals);
     };
 
     const formatPercent = (value) => {
-        return `${formatNumber(value, 1)}%`;
+        return `${formatNumber(value, 2)}%`;
+    };
+
+    // Scientific notation formatter for large numbers
+    const formatScientific = (value) => {
+        if (Math.abs(value) >= 1000000) {
+            return `${(value / 1000000).toFixed(1)}M`;
+        } else if (Math.abs(value) >= 1000) {
+            return `${(value / 1000).toFixed(1)}K`;
+        }
+        return formatNumber(value);
     };
 
     // Calculate proper ROI and cash flow with NPV
@@ -587,7 +643,7 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                     <ROIMetric>
                         <ROIValue>
                             {typeof metrics.paybackPeriod === 'number'
-                                ? `${formatNumber(metrics.paybackPeriod, 1)} years`
+                                ? `${formatNumber(metrics.paybackPeriod)} years`
                                 : 'No payback'
                             }
                         </ROIValue>
@@ -660,11 +716,15 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                             tick={{ fontSize: 12 }}
                             label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                         />
-                        <YAxis tick={{ fontSize: 12 }} />
+                        <YAxis 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatNumber}
+                            label={{ value: 'ROI (%)', angle: -90, position: 'insideLeft' }}
+                        />
                         <Tooltip
                             labelFormatter={(value) => `Year ${value}`}
                             formatter={(value, name) => [
-                                name.includes('ROI') ? `${value}%` : value,
+                                name.includes('ROI') ? `${formatNumber(value)}%` : formatNumber(value),
                                 name
                             ]}
                         />
@@ -726,13 +786,25 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                             tick={{ fontSize: 12 }}
                             label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                         />
-                        <YAxis yAxisId="temp" orientation="left" tick={{ fontSize: 12 }} />
-                        <YAxis yAxisId="veg" orientation="right" tick={{ fontSize: 12 }} />
+                        <YAxis 
+                            yAxisId="temp" 
+                            orientation="left" 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatNumber}
+                            label={{ value: 'Temperature Reduction (°C)', angle: -90, position: 'insideLeft' }}
+                        />
+                        <YAxis 
+                            yAxisId="veg" 
+                            orientation="right" 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatNumber}
+                            label={{ value: 'Vegetation Increase (%)', angle: 90, position: 'insideRight' }}
+                        />
                         <Tooltip
                             labelFormatter={(value) => `Year ${value}`}
                             formatter={(value, name) => [
-                                name.includes('Temperature') ? `${value}°C` :
-                                    name.includes('Vegetation') ? `${value}%` : value,
+                                name.includes('Temperature') ? `${formatNumber(value)}°C` :
+                                    name.includes('Vegetation') ? `${formatNumber(value)}%` : formatNumber(value),
                                 name
                             ]}
                         />
@@ -773,13 +845,25 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                             tick={{ fontSize: 12 }}
                             label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                         />
-                        <YAxis yAxisId="carbon" orientation="left" tick={{ fontSize: 12 }} />
-                        <YAxis yAxisId="water" orientation="right" tick={{ fontSize: 12 }} />
+                        <YAxis 
+                            yAxisId="carbon" 
+                            orientation="left" 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatNumber}
+                            label={{ value: 'Carbon Sequestration (t/yr)', angle: -90, position: 'insideLeft' }}
+                        />
+                        <YAxis 
+                            yAxisId="water" 
+                            orientation="right" 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatScientific}
+                            label={{ value: 'Water Management (k m³/yr)', angle: 90, position: 'insideRight' }}
+                        />
                         <Tooltip
                             labelFormatter={(value) => `Year ${value}`}
                             formatter={(value, name) => [
-                                name.includes('Carbon') ? `${value} t/yr` :
-                                    name.includes('Water') ? `${value} k m³/yr` : value,
+                                name.includes('Carbon') ? `${formatNumber(value)} t/yr` :
+                                    name.includes('Water') ? `${formatNumber(value)} k m³/yr` : formatNumber(value),
                                 name
                             ]}
                         />
@@ -835,7 +919,7 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                 <StatCard>
                     <StatValue color={COLORS.primary}>
                         {typeof metrics.paybackPeriod === 'number'
-                            ? `${formatNumber(metrics.paybackPeriod, 1)} years`
+                            ? `${formatNumber(metrics.paybackPeriod)} years`
                             : 'No payback'
                         }
                     </StatValue>
@@ -858,8 +942,15 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                             tick={{ fontSize: 12 }}
                             label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                         />
-                        <YAxis tick={{ fontSize: 12 }} />
-                        <Tooltip formatter={(value) => [formatCurrency(value), '']} />
+                        <YAxis 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatScientific}
+                            label={{ value: 'Amount (BDT)', angle: -90, position: 'insideLeft' }}
+                        />
+                        <Tooltip 
+                            formatter={(value, name) => [formatCurrency(value), name]}
+                            labelFormatter={(value) => `Year ${value}`}
+                        />
                         <Bar dataKey="costs" fill={COLORS.danger} name="Total Costs" opacity={0.7} />
                         <Bar dataKey="benefits" fill={COLORS.success} name="Total Benefits" opacity={0.7} />
                         <Line
@@ -888,7 +979,7 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                                 cx="50%"
                                 cy="50%"
                                 labelLine={false}
-                                label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
+                                label={({ name, percent }) => `${name}: ${formatNumber(percent * 100)}%`}
                                 outerRadius={100}
                                 fill="#8884d8"
                                 dataKey="value"
@@ -897,7 +988,9 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                                     <Cell key={`cell-${index}`} fill={entry.color} />
                                 ))}
                             </Pie>
-                            <Tooltip formatter={(value) => [formatCurrency(value), '']} />
+                            <Tooltip 
+                                formatter={(value, name) => [formatCurrency(value), name]}
+                            />
                         </PieChart>
                     </ResponsiveContainer>
                 </ProfessionalChart>
@@ -917,7 +1010,11 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                             tick={{ fontSize: 12 }}
                             label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                         />
-                        <YAxis tick={{ fontSize: 12 }} />
+                        <YAxis 
+                            tick={{ fontSize: 12 }}
+                            tickFormatter={formatScientific}
+                            label={{ value: 'Cash Flow (BDT)', angle: -90, position: 'insideLeft' }}
+                        />
                         <Tooltip
                             labelFormatter={(value) => `Year ${value}`}
                             formatter={(value, name) => [formatCurrency(value), name]}
@@ -960,9 +1057,20 @@ const InterventionResultsModal = ({ isOpen, onClose, results }) => {
                     >
                         <Header>
                             <Title>Intervention Analysis Results</Title>
-                            <CloseButton onClick={onClose}>
-                                <FiX size={20} />
-                            </CloseButton>
+                            <HeaderActions>
+                                <DownloadButton
+                                    onClick={handleDownloadPDF}
+                                    disabled={isDownloading}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <FiDownload size={16} />
+                                    {isDownloading ? 'Generating...' : 'Download PDF'}
+                                </DownloadButton>
+                                <CloseButton onClick={onClose}>
+                                    <FiX size={20} />
+                                </CloseButton>
+                            </HeaderActions>
                         </Header>
 
                         <Content>

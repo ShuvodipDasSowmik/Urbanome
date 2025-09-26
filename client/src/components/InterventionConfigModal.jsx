@@ -22,12 +22,13 @@ const Overlay = styled(motion.div)`
 const Modal = styled(motion.div)`
   background: white;
   border-radius: 20px;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 800px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: relative;
+  overflow-x: hidden;
 `;
 
 const Header = styled.div`
@@ -187,7 +188,7 @@ const HintTooltip = styled.div`
   &:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%);
   }
 `;
 

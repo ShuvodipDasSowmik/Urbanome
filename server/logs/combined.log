@@ -1222,3 +1222,4 @@
 {"level":"info","message":"Returning cached temperature data","service":"nasa-healthy-cities","timestamp":"2025-09-16 13:30:51","version":"1.0.0"}
 {"level":"info","message":"::1 - - [16/Sep/2025:07:30:51 +0000] \"GET /api/nasa/temperature?latitude=23.8103&longitude=90.4125&start_date=2024-09-16&end_date=2025-09-09 HTTP/1.1\" 304 - \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"nasa-healthy-cities","timestamp":"2025-09-16 13:30:51","version":"1.0.0"}
 {"level":"info","message":"SIGINT signal received: closing HTTP server","service":"nasa-healthy-cities","timestamp":"2025-09-16 13:31:18","version":"1.0.0"}
+{"environment":"development","level":"info","logLevel":"info","logsDirectory":"E:\\NSAC\\NSAC-Primary-Project\\server\\logs","message":"Logger initialized","service":"nasa-healthy-cities","timestamp":"2025-09-27 01:20:13","version":"1.0.0"}

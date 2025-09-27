@@ -89,12 +89,13 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? [process.env.CLIENT_URL, "https://your-production-domain.com"]
+        ? ["http://localhost:3000", "https://urbanome-xi.vercel.app"]
         : [
             "http://localhost:3000",
             "http://localhost:3001",
             "http://127.0.0.1:3000",
             "http://127.0.0.1:3001",
+            "https://urbanome-xi.vercel.app"
           ],
     credentials: true,
   })

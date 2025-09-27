@@ -38,8 +38,8 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border-radius: 20px 20px 0 0;
 `;
@@ -127,12 +127,12 @@ const Spinner = styled.div`
 const LoadingText = styled.div`
   font-size: 1.125rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #667eea;
   margin-bottom: 0.5rem;
 `;
 
 const LoadingSubtext = styled.div`
-  color: #64748b;
+  color: rgba(102, 126, 234, 0.8);
   font-size: 0.875rem;
   max-width: 400px;
   line-height: 1.5;
@@ -341,12 +341,12 @@ const SummaryText = styled.p`
 `;
 
 const COLORS = {
-    primary: '#10b981',
-    secondary: '#3b82f6',
-    warning: '#f59e0b',
-    danger: '#ef4444',
-    info: '#8b5cf6',
-    success: '#22c55e'
+    primary: '#667eea',
+    secondary: '#764ba2',
+    warning: '#f093fb',
+    danger: '#2d1b69',
+    info: '#1a1a3e',
+    success: '#667eea'
 };
 
 const AnalysisModal = ({ isOpen, onClose, isLoading, data, coordinates }) => {

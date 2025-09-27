@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import styled from 'styled-components';
 
@@ -22,6 +22,8 @@ import DataSources from './pages/DataSources';
 
 // Styles
 import GlobalStyles from './styles/GlobalStyles';
+import Home from './pages/Home';
+import ComingSoon from './pages/ComingSoon';
 
 const AppContainer = styled.div`
   display: flex;
@@ -39,10 +41,37 @@ const MainContent = styled.div`
 const ContentArea = styled.main`
   flex: 1;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: ${props => props.$isHomePage ? 'transparent' : 'rgba(255, 255, 255, 0.95)'};
+  box-shadow: ${props => props.$isHomePage ? 'none' : '0 20px 40px rgba(0, 0, 0, 0.1)'};
+  backdrop-filter: ${props => props.$isHomePage ? 'none' : 'blur(10px)'};
 `;
+
+// Layout component to handle conditional sidebar
+function AppLayout() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <AppContainer>
+      <MainContent>
+        {!isHomePage && <Sidebar />}
+        <ContentArea $isHomePage={isHomePage}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/digital-twin" element={<DigitalTwin />} />
+            <Route path="/intervention-planner" element={<InterventionPlanner />} />
+            <Route path="/cost-benefit" element={<CostBenefitAnalysis />} />
+            <Route path="/policy-brief" element={<ComingSoon />} />
+            <Route path="/data-sources" element={<DataSources />} />
+            <Route path='/ngo' element={<ComingSoon />} />
+            <Route path='/govt' element={<ComingSoon />} />
+          </Routes>
+        </ContentArea>
+      </MainContent>
+    </AppContainer>
+  );
+}
 
 function App() {
   return (
@@ -50,22 +79,7 @@ function App() {
       <InterventionProvider>
         <Router>
           <GlobalStyles />
-          <AppContainer>
-            <MainContent>
-              <Sidebar />
-              <ContentArea>
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/digital-twin" element={<DigitalTwin />} />
-                  <Route path="/intervention-planner" element={<InterventionPlanner />} />
-                  <Route path="/cost-benefit" element={<CostBenefitAnalysis />} />
-                  <Route path="/policy-brief" element={<PolicyBrief />} />
-                  <Route path="/data-sources" element={<DataSources />} />
-                </Routes>
-              </ContentArea>
-            </MainContent>
-          </AppContainer>
+          <AppLayout />
           <Toaster
             position="top-right"
             toastOptions={{

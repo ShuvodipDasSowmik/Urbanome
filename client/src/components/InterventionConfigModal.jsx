@@ -36,8 +36,8 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border-radius: 20px 20px 0 0;
 `;
@@ -74,17 +74,17 @@ const InterventionTypeGrid = styled.div`
 `;
 
 const InterventionTypeCard = styled(motion.div)`
-  border: 2px solid ${props => props.selected ? '#10b981' : '#e5e7eb'};
+  border: 2px solid ${props => props.selected ? '#667eea' : 'rgba(102, 126, 234, 0.2)'};
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
-  background: ${props => props.selected ? '#10b98110' : 'white'};
+  background: ${props => props.selected ? 'rgba(102, 126, 234, 0.1)' : 'white'};
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #10b981;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
   }
 `;
 
@@ -159,8 +159,8 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 `;
 
@@ -175,8 +175,8 @@ const Select = styled.select`
 
   &:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 `;
 
@@ -252,11 +252,11 @@ const CancelButton = styled(Button)`
 `;
 
 const ApplyButton = styled(Button)`
-  background: #10b981;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
 
   &:hover {
-    background: #059669;
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
   }
 
   &:disabled {

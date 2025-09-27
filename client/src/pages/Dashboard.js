@@ -31,7 +31,7 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const DashboardContainer = styled.div`
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
   min-height: 100vh;
 `;
 
@@ -44,9 +44,10 @@ const Title = styled.h1`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: white;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #fff, #667eea, #f093fb);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -54,19 +55,21 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   font-size: 1.1rem;
-  color: #718096;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
 `;
 
 const CitySelector = styled.div`
   display: inline-flex;
   align-items: center;
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-weight: 600;
-  color: #4a5568;
+  color: white;
   margin-bottom: 2rem;
 `;
 
@@ -88,7 +91,7 @@ const SectionTitle = styled.h2`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
-  color: #2d3748;
+  color: white;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -96,8 +99,10 @@ const SectionTitle = styled.h2`
 `;
 
 const AlertBanner = styled(motion.div)`
-  background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
-  border-left: 4px solid #e53e3e;
+  background: rgba(240, 147, 251, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(240, 147, 251, 0.3);
+  border-left: 4px solid #f093fb;
   padding: 1rem 1.5rem;
   border-radius: 12px;
   margin-bottom: 2rem;
@@ -108,12 +113,12 @@ const AlertBanner = styled(motion.div)`
 
 const AlertText = styled.div`
   h4 {
-    color: #c53030;
+    color: #f093fb;
     font-weight: 600;
     margin: 0 0 0.25rem 0;
   }
   p {
-    color: #9c4221;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
   }
 `;
@@ -182,11 +187,12 @@ const FeatureGrid = styled.div`
 `;
 
 const FeatureCard = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
   
@@ -223,12 +229,12 @@ const FeatureIcon = styled.div`
 const FeatureTitle = styled.h3`
   font-size: 1.4rem;
   font-weight: 700;
-  color: #2d3748;
+  color: white;
   margin: 0;
 `;
 
 const FeatureDescription = styled.p`
-  color: #718096;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 `;
@@ -241,17 +247,19 @@ const DataSourcesGrid = styled.div`
 `;
 
 const DataSourceCard = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  border: 2px solid transparent;
   transition: all 0.3s ease;
   
   &:hover {
     border-color: ${props => props.color || '#667eea'};
     transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
   }
 `;
 
@@ -269,18 +277,20 @@ const DataSourceIcon = styled.div`
 `;
 
 const WorkflowSection = styled.div`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2.5rem;
   margin-bottom: 3rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 `;
 
 const WorkflowTitle = styled.h2`
   text-align: center;
   font-size: 2.2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: white;
   margin-bottom: 2rem;
 `;
 
@@ -311,12 +321,12 @@ const WorkflowStep = styled(motion.div)`
   .step-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #2d3748;
+    color: white;
     margin-bottom: 0.5rem;
   }
   
   .step-description {
-    color: #718096;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
     line-height: 1.5;
   }
@@ -324,22 +334,19 @@ const WorkflowStep = styled(motion.div)`
 
 const MetricsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(1px, 3fr));
 `;
 
 const MetricCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 1.5rem;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const ImpactSection = styled.div`
-  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 20px;
   padding: 3rem 2rem;
   color: white;
@@ -441,11 +448,11 @@ function Dashboard() {
         
         <HeroStats>
           <HeroStat>
-            <span className="number">3</span>
+            <span className="number">4</span>
             <span className="label">NASA Data Sources</span>
           </HeroStat>
           <HeroStat>
-            <span className="number">5+</span>
+            <span className="number">4</span>
             <span className="label">Intervention Types</span>
           </HeroStat>
           <HeroStat>
@@ -487,15 +494,15 @@ function Dashboard() {
           <MetricsGrid>
             <MetricCard>
               <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#38a169' }}>NDVI</div>
-              <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>Vegetation Health</div>
+              <div style={{ fontSize: '0.9rem', opacity: 0.8, color: 'white' }}>Vegetation Health</div>
             </MetricCard>
             <MetricCard>
               <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#3182ce' }}>SRTM</div>
-              <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>Elevation Data</div>
+              <div style={{ fontSize: '0.9rem', opacity: 0.8, color: 'white' }}>Elevation Data</div>
             </MetricCard>
             <MetricCard>
               <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#e53e3e' }}>LST</div>
-              <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>Temperature</div>
+              <div style={{ fontSize: '0.9rem', opacity: 0.8, color: 'white' }}>Temperature</div>
             </MetricCard>
           </MetricsGrid>
         </FeatureCard>
@@ -518,10 +525,10 @@ function Dashboard() {
             visualizing vegetation coverage, temperature patterns, and elevation data.
           </FeatureDescription>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-            <span style={{ background: 'rgba(56, 161, 105, 0.2)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem' }}>
+            <span style={{ background: 'rgba(56, 161, 105, 0.2)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem', color: 'white' }}>
               🗺️ Interactive Maps
             </span>
-            <span style={{ background: 'rgba(49, 130, 206, 0.2)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem' }}>
+            <span style={{ background: 'rgba(49, 130, 206, 0.2)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem', color: 'white' }}>
               📍 Polygon Selection
             </span>
           </div>
@@ -545,16 +552,16 @@ function Dashboard() {
             and green infrastructure to see immediate environmental impact predictions.
           </FeatureDescription>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginTop: '1rem' }}>
-            <div style={{ background: 'rgba(56, 161, 105, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem' }}>
+            <div style={{ background: 'rgba(56, 161, 105, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: '#38a169' }}>
               🌳 Tree Planting
             </div>
-            <div style={{ background: 'rgba(49, 130, 206, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem' }}>
+            <div style={{ background: 'rgba(49, 130, 206, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: '#3182ce'   }}>
               💧 Water Fields
             </div>
-            <div style={{ background: 'rgba(128, 90, 213, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem' }}>
+            <div style={{ background: 'rgba(128, 90, 213, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: '#805ad5' }}>
               🏢 Green Buildings
             </div>
-            <div style={{ background: 'rgba(245, 158, 11, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem' }}>
+            <div style={{ background: 'rgba(245, 158, 11, 0.1)', padding: '0.5rem', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', color: '#d69e2e' }}>
               🌿 Green Corridors
             </div>
           </div>
@@ -580,15 +587,15 @@ function Dashboard() {
           <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem', padding: '1rem 0' }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#38a169' }}>↗️</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>ROI Analysis</div>
+              <div style={{ fontSize: '0.8rem', opacity: 0.8, color: 'white' }}>ROI Analysis</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#3182ce' }}>💰</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Cost Estimation</div>
+              <div style={{ fontSize: '0.8rem', opacity: 0.8, color: 'white' }}>Cost Estimation</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#805ad5' }}>📊</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Impact Metrics</div>
+              <div style={{ fontSize: '0.8rem', opacity: 0.8, color: 'white' }}>Impact Metrics</div>
             </div>
           </div>
         </FeatureCard>
@@ -612,7 +619,7 @@ function Dashboard() {
           </FeatureDescription>
           <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(128, 90, 213, 0.1)', borderRadius: '10px' }}>
             <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#805ad5' }}>Prediction Models:</div>
-            <div style={{ fontSize: '0.9rem', lineHeight: '1.4' }}>
+            <div style={{ fontSize: '0.9rem', lineHeight: '1.4', color: 'white' }}>
               • Temperature reduction trends<br/>
               • Vegetation growth patterns<br/>
               • Air quality improvements<br/>
@@ -641,11 +648,11 @@ function Dashboard() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
             <div style={{ textAlign: 'center', padding: '0.5rem', background: 'rgba(229, 62, 62, 0.1)', borderRadius: '8px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#e53e3e' }}>-2°C</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Temperature Drop</div>
+              <div style={{ fontSize: '0.8rem', opacity: 0.8, color: 'white' }}>Temperature Drop</div>
             </div>
             <div style={{ textAlign: 'center', padding: '0.5rem', background: 'rgba(56, 161, 105, 0.1)', borderRadius: '8px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#38a169' }}>+15%</div>
-              <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Green Coverage</div>
+              <div style={{ fontSize: '0.8rem', opacity: 0.8, color: 'white' }}>Green Coverage</div>
             </div>
           </div>
         </FeatureCard>
@@ -668,8 +675,8 @@ function Dashboard() {
           <DataSourceIcon color="#38a169">
             <FiLayers />
           </DataSourceIcon>
-          <h4 style={{ margin: '0 0 0.5rem 0', color: '#2d3748' }}>Sentinel-2 NDVI</h4>
-          <p style={{ margin: 0, fontSize: '0.9rem', color: '#718096' }}>
+          <h4 style={{ margin: '0 0 0.5rem 0', color: '#38a169' }}>Sentinel-2 NDVI</h4>
+          <p style={{ margin: 0, fontSize: '0.9rem', color: 'white' }}>
             Vegetation health and green coverage monitoring with 10m resolution
           </p>
         </DataSourceCard>
@@ -684,8 +691,8 @@ function Dashboard() {
           <DataSourceIcon color="#3182ce">
             <FiTrendingUp />
           </DataSourceIcon>
-          <h4 style={{ margin: '0 0 0.5rem 0', color: '#2d3748' }}>SRTM Elevation</h4>
-          <p style={{ margin: 0, fontSize: '0.9rem', color: '#718096' }}>
+          <h4 style={{ margin: '0 0 0.5rem 0', color: '#3182ce' }}>SRTM Elevation</h4>
+          <p style={{ margin: 0, fontSize: '0.9rem', color: 'white' }}>
             High-resolution digital elevation model for topographic analysis
           </p>
         </DataSourceCard>
@@ -700,8 +707,8 @@ function Dashboard() {
           <DataSourceIcon color="#e53e3e">
             <FiThermometer />
           </DataSourceIcon>
-          <h4 style={{ margin: '0 0 0.5rem 0', color: '#2d3748' }}>ECOSTRESS LST</h4>
-          <p style={{ margin: 0, fontSize: '0.9rem', color: '#718096' }}>
+          <h4 style={{ margin: '0 0 0.5rem 0', color: '#e53e3e' }}>ECOSTRESS LST</h4>
+          <p style={{ margin: 0, fontSize: '0.9rem', color: 'white' }}>
             Land Surface Temperature data for urban heat island analysis
           </p>
         </DataSourceCard>

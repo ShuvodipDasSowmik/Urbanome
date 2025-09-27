@@ -36,7 +36,7 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
   overflow: hidden;
 `;
 
@@ -47,14 +47,19 @@ const Header = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #1e293b;
+  color: white;
   font-size: 1.75rem;
   font-weight: bold;
   margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #fff, #667eea, #f093fb);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 const Subtitle = styled.p`
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
 `;
 
@@ -67,9 +72,11 @@ const ContentGrid = styled.div`
 `;
 
 const MapWrapper = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
   height: 100%;
@@ -83,16 +90,18 @@ const MapWrapper = styled(motion.div)`
 `;
 
 const ControlPanel = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   max-height: 100%;
 `;
 
 const PanelTitle = styled.h3`
-  color: #1e293b;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -108,26 +117,27 @@ const LayerItem = styled.div`
   padding: 0.75rem;
   border-radius: 8px;
   margin-bottom: 0.5rem;
-  background: ${(props) => (props.active ? "#eff6ff" : "#f8fafc")};
-  border: 1px solid ${(props) => (props.active ? "#3b82f6" : "#e2e8f0")};
+  background: ${(props) => (props.active ? "rgba(102, 126, 234, 0.1)" : "rgba(255, 255, 255, 0.05)")};
+  border: 1px solid ${(props) => (props.active ? "#667eea" : "rgba(255, 255, 255, 0.1)")};
   cursor: pointer;
   transition: all 0.2s;
+  backdrop-filter: blur(10px);
 
   &:hover {
-    background: #eff6ff;
-    border-color: #3b82f6;
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
   }
 `;
 
 const LayerIcon = styled.div`
   margin-right: 0.75rem;
   margin-top: 0.125rem;
-  color: ${(props) => (props.active ? "#3b82f6" : "#64748b")};
+  color: ${(props) => (props.active ? "#667eea" : "rgba(255, 255, 255, 0.6)")};
 `;
 
 const LayerLabel = styled.div`
   flex: 1;
-  color: ${(props) => (props.active ? "#1e293b" : "#64748b")};
+  color: ${(props) => (props.active ? "white" : "rgba(255, 255, 255, 0.8)")};
   font-weight: ${(props) => (props.active ? "600" : "500")};
   font-size: 0.875rem;
 `;
@@ -135,20 +145,21 @@ const LayerLabel = styled.div`
 const LayerValue = styled.div`
   font-size: 0.8rem;
   font-weight: 600;
-  color: ${(props) => (props.active ? "#3b82f6" : "#64748b")};
+  color: ${(props) => (props.active ? "#667eea" : "rgba(255, 255, 255, 0.7)")};
 `;
 
 const LayerDescription = styled.div`
   font-size: 0.7rem;
-  color: #94a3b8;
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 0.25rem;
   line-height: 1.3;
 `;
 
 const DataSource = styled.div`
   font-size: 0.7rem;
-  color: #64748b;
-  background: #f1f5f9;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   margin-top: 0.4rem;
@@ -165,7 +176,7 @@ const DataSource = styled.div`
 
 const LegendTitle = styled.h4`
   margin: 0 0 0.5rem 0;
-  color: #1e293b;
+  color: white;
   font-size: 0.9rem;
 `;
 
@@ -188,7 +199,7 @@ const LegendLabels = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.7);
 `;
 
 // Component to handle map sizing and view

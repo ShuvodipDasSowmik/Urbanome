@@ -6,7 +6,7 @@ import { FiDatabase, FiGlobe, FiLink, FiDownload, FiInfo, FiExternalLink } from 
 const Container = styled.div`
   padding: 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
 `;
 
 const Header = styled.div`
@@ -14,14 +14,19 @@ const Header = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #1e293b;
+  color: white;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, #667eea, #f093fb);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 const Subtitle = styled.p`
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.125rem;
 `;
 
@@ -32,11 +37,12 @@ const DataSourcesGrid = styled.div`
 `;
 
 const DataSourceCard = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
 `;
 
 const CardHeader = styled.div`
@@ -58,20 +64,20 @@ const SourceInfo = styled.div`
 `;
 
 const SourceTitle = styled.h3`
-  color: #1e293b;
+  color: white;
   font-size: 1.25rem;
   font-weight: bold;
   margin: 0 0 0.25rem 0;
 `;
 
 const SourceProvider = styled.div`
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.875rem;
   font-weight: 600;
 `;
 
 const SourceDescription = styled.p`
-  color: #374151;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -86,12 +92,13 @@ const SourceMeta = styled.div`
 
 const MetaItem = styled.div`
   padding: 0.75rem;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
 `;
 
 const MetaLabel = styled.div`
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -99,7 +106,7 @@ const MetaLabel = styled.div`
 `;
 
 const MetaValue = styled.div`
-  color: #1e293b;
+  color: white;
   font-weight: 600;
 `;
 
@@ -113,27 +120,29 @@ const ActionButton = styled(motion.button)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  background: white;
-  color: #374151;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  backdrop-filter: blur(10px);
 
   &:hover {
-    border-color: #3b82f6;
-    background: #f3f4f6;
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    color: white;
   }
 
   &.primary {
-    background: #3b82f6;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    border-color: #3b82f6;
+    border-color: #667eea;
 
     &:hover {
-      background: #2563eb;
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
     }
   }
 `;
@@ -144,8 +153,9 @@ const StatusBadge = styled.span`
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  background: ${props => props.status === 'active' ? '#dcfce7' : '#fef3c7'};
-  color: ${props => props.status === 'active' ? '#166534' : '#92400e'};
+  background: ${props => props.status === 'active' ? 'rgba(102, 126, 234, 0.2)' : 'rgba(240, 147, 251, 0.2)'};
+  color: ${props => props.status === 'active' ? '#667eea' : '#f093fb'};
+  border: 1px solid ${props => props.status === 'active' ? 'rgba(102, 126, 234, 0.3)' : 'rgba(240, 147, 251, 0.3)'};
 `;
 
 const DataSources = () => {
@@ -154,44 +164,28 @@ const DataSources = () => {
   const dataSources = [
     {
       id: 1,
-      title: "MODIS Land Surface Temperature",
-      provider: "NASA Terra/Aqua Satellites",
+      title: "ECOSTRESS Land Surface Temperature",
+      provider: "Collected by ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station",
       description: "High-resolution thermal imagery for monitoring urban heat island effects and surface temperature patterns across cities.",
       icon: <FiGlobe size={24} />,
       color: "#ef4444",
-      resolution: "1km",
-      frequency: "Daily",
-      coverage: "Global",
-      status: "active",
-      url: "https://lpdaac.usgs.gov/products/mod11a1v006/",
+      resolution: "70m",
+      frequency: "April 2025 - September 2025",
+      coverage: "Dhaka, Bangladesh",
+      url: "https://www.earthdata.nasa.gov/data/catalog/lpcloud-eco2lste-001",
       applications: ["Heat island mapping", "Energy demand modeling", "Climate monitoring"]
     },
     {
-      id: 2,
-      title: "GPM IMERG Precipitation",
-      provider: "NASA Global Precipitation Measurement",
-      description: "Real-time precipitation data for flood risk assessment and stormwater management planning in urban areas.",
-      icon: <FiDatabase size={24} />,
-      color: "#3b82f6",
-      resolution: "0.1°",
-      frequency: "30 minutes",
-      coverage: "60°N-60°S",
-      status: "active",
-      url: "https://gpm.nasa.gov/data/imerg",
-      applications: ["Flood modeling", "Drainage planning", "Climate adaptation"]
-    },
-    {
       id: 3,
-      title: "Landsat NDVI",
-      provider: "USGS/NASA Landsat Program",
+      title: "Sentinel-2 NDVI",
+      provider: "European Space Agency Sentinel-2 Mission",
       description: "Normalized Difference Vegetation Index for monitoring urban green spaces, vegetation health, and land cover changes.",
       icon: <FiDatabase size={24} />,
       color: "#10b981",
       resolution: "30m",
       frequency: "16 days",
-      coverage: "Global",
-      status: "active",
-      url: "https://landsat.gsfc.nasa.gov/",
+      coverage: "Dhaka, Bangladesh",
+      url: "https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/ndvi/",
       applications: ["Green space monitoring", "Urban planning", "Ecosystem health"]
     },
     {
@@ -204,7 +198,6 @@ const DataSources = () => {
       resolution: "30m",
       frequency: "Static",
       coverage: "60°N-56°S",
-      status: "archived",
       url: "https://lpdaac.usgs.gov/products/srtmgl1v003/",
       applications: ["Topographic analysis", "Watershed modeling", "Infrastructure planning"]
     },
@@ -222,20 +215,7 @@ const DataSources = () => {
       url: "https://tempo.si.edu/",
       applications: ["Air quality assessment", "Health impact studies", "Pollution source tracking"]
     },
-    {
-      id: 6,
-      title: "VIIRS Nighttime Lights",
-      provider: "NOAA/NASA Suomi NPP",
-      description: "Nighttime imagery for monitoring urban development, energy usage patterns, and socioeconomic indicators.",
-      icon: <FiGlobe size={24} />,
-      color: "#6366f1",
-      resolution: "500m",
-      frequency: "Daily",
-      coverage: "Global",
-      status: "active",
-      url: "https://www.ngdc.noaa.gov/eog/viirs/",
-      applications: ["Urban development tracking", "Energy consumption analysis", "Economic activity monitoring"]
-    }
+    
   ];
 
   return (
@@ -317,10 +297,10 @@ const DataSources = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                style={{ marginTop: '1rem', padding: '1rem', background: '#f8fafc', borderRadius: '8px' }}
+                style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '8px' }}
               >
-                <h4 style={{ margin: '0 0 0.5rem 0', color: '#1e293b' }}>Applications:</h4>
-                <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#374151' }}>
+                <h4 style={{ margin: '0 0 0.5rem 0', color: 'white' }}>Applications:</h4>
+                <ul style={{ margin: 0, paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
                   {source.applications.map((app, i) => (
                     <li key={i}>{app}</li>
                   ))}

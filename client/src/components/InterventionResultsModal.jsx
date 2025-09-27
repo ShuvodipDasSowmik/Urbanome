@@ -43,8 +43,8 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border-radius: 20px 20px 0 0;
 `;
@@ -117,8 +117,8 @@ const Tab = styled.button`
   flex: 1;
   padding: 1rem 2rem;
   border: none;
-  background: ${props => props.active ? '#3b82f6' : 'transparent'};
-  color: ${props => props.active ? 'white' : '#64748b'};
+  background: ${props => props.active ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'transparent'};
+  color: ${props => props.active ? 'white' : 'rgba(102, 126, 234, 0.8)'};
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
@@ -130,8 +130,8 @@ const Tab = styled.button`
   font-size: 0.95rem;
 
   &:hover {
-    background: ${props => props.active ? '#3b82f6' : '#e2e8f0'};
-    color: ${props => props.active ? 'white' : '#374151'};
+    background: ${props => props.active ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'rgba(102, 126, 234, 0.1)'};
+    color: ${props => props.active ? 'white' : '#667eea'};
   }
 `;
 
@@ -436,12 +436,12 @@ const ChartContainer = styled.div`
 `;
 
 const COLORS = {
-    primary: '#3b82f6',
-    success: '#10b981',
-    warning: '#f59e0b',
-    danger: '#ef4444',
-    info: '#06b6d4',
-    purple: '#8b5cf6'
+    primary: '#667eea',
+    success: '#764ba2',
+    warning: '#f093fb',
+    danger: '#2d1b69',
+    info: '#1a1a3e',
+    purple: '#667eea'
 };
 
 const InterventionResultsModal = ({ isOpen, onClose, results, interventionName = 'Intervention' }) => {

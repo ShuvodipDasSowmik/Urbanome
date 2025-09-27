@@ -25,7 +25,7 @@ import axios from "axios";
 
 const Container = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
 `;
 
 const Header = styled.div`
@@ -33,14 +33,19 @@ const Header = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #1e293b;
+  color: white;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, #667eea, #f093fb);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 const Subtitle = styled.p`
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.125rem;
 `;
 
@@ -57,7 +62,9 @@ const MapWrapper = styled.div`
 `;
 
 const PlannerPanel = styled(motion.div)`
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -65,7 +72,7 @@ const PlannerPanel = styled(motion.div)`
 `;
 
 const PanelTitle = styled.h3`
-  color: #1e293b;
+  color: white;
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -77,16 +84,16 @@ const AddButton = styled(motion.button)`
   gap: 0.5rem;
   width: 100%;
   padding: 1rem;
-  border: 2px dashed #10b981;
+  border: 2px dashed #667eea;
   border-radius: 10px;
   background: transparent;
-  color: #10b981;
+  color: #667eea;
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 1.5rem;
 
   &:hover {
-    background: rgba(16, 185, 129, 0.05);
+    background: rgba(102, 126, 234, 0.1);
   }
 `;
 
@@ -97,32 +104,33 @@ const CurrentSituationButton = styled(motion.button)`
   gap: 0.5rem;
   width: 100%;
   padding: 1rem;
-  border: 2px solid ${(props) => (props.disabled ? "#e5e7eb" : "#3b82f6")};
+  border: 2px solid ${(props) => (props.disabled ? "rgba(255, 255, 255, 0.2)" : "#667eea")};
   border-radius: 10px;
-  background: ${(props) => (props.disabled ? "#f9fafb" : "#3b82f6")};
-  color: ${(props) => (props.disabled ? "#9ca3af" : "white")};
+  background: ${(props) => (props.disabled ? "rgba(255, 255, 255, 0.05)" : "linear-gradient(135deg, #667eea, #764ba2)")};
+  color: ${(props) => (props.disabled ? "rgba(255, 255, 255, 0.5)" : "white")};
   font-weight: 600;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   margin-bottom: 1.5rem;
 
   &:hover {
-    background: ${(props) => (props.disabled ? "#f9fafb" : "#2563eb")};
-    border-color: ${(props) => (props.disabled ? "#e5e7eb" : "#2563eb")};
+    background: ${(props) => (props.disabled ? "rgba(255, 255, 255, 0.05)" : "linear-gradient(135deg, #5a67d8, #6b46c1)")};
+    border-color: ${(props) => (props.disabled ? "rgba(255, 255, 255, 0.2)" : "#5a67d8")};
   }
 `;
 
 const InterventionCard = styled(motion.div)`
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 1rem;
   margin-bottom: 1rem;
-  background: ${(props) => (props.selected ? "#f0fdf4" : "white")};
+  background: ${(props) => (props.selected ? "rgba(102, 126, 234, 0.1)" : "rgba(255, 255, 255, 0.05)")};
   cursor: pointer;
   transition: all 0.2s;
+  backdrop-filter: blur(10px);
 
   &:hover {
-    border-color: #10b981;
-    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.1);
+    border-color: #667eea;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
   }
 `;
 
@@ -134,7 +142,7 @@ const CardHeader = styled.div`
 `;
 
 const InterventionType = styled.span`
-  background: #10b981;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -143,14 +151,14 @@ const InterventionType = styled.span`
 `;
 
 const InterventionTitle = styled.h4`
-  color: #1e293b;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
   margin: 0.5rem 0;
 `;
 
 const InterventionDescription = styled.p`
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
 `;
@@ -159,7 +167,7 @@ const InterventionMeta = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.75rem;
 `;
 
@@ -173,10 +181,10 @@ const ActionButton = styled(motion.button)`
   flex: 1;
   padding: 0.5rem 1rem;
   border: 1px solid
-    ${(props) => (props.variant === "primary" ? "#3b82f6" : "#e5e7eb")};
+    ${(props) => (props.variant === "primary" ? "#667eea" : "rgba(255, 255, 255, 0.2)")};
   border-radius: 6px;
-  background: ${(props) => (props.variant === "primary" ? "#3b82f6" : "white")};
-  color: ${(props) => (props.variant === "primary" ? "white" : "#64748b")};
+  background: ${(props) => (props.variant === "primary" ? "linear-gradient(135deg, #667eea, #764ba2)" : "rgba(255, 255, 255, 0.05)")};
+  color: ${(props) => (props.variant === "primary" ? "white" : "rgba(255, 255, 255, 0.8)")};
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -187,7 +195,7 @@ const ActionButton = styled(motion.button)`
 
   &:hover {
     background: ${(props) =>
-      props.variant === "primary" ? "#2563eb" : "#f9fafb"};
+      props.variant === "primary" ? "linear-gradient(135deg, #5a67d8, #6b46c1)" : "rgba(255, 255, 255, 0.1)"};
   }
 
   &:disabled {

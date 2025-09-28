@@ -8,6 +8,7 @@ import {
   Popup,
   ImageOverlay,
   useMap,
+  Circle
 } from "react-leaflet";
 import L from "leaflet";
 import {
@@ -336,9 +337,9 @@ function VegetationOverlay({ isVisible }) {
     <ImageOverlay
       url="/data/dhaka_landcover.png"
       bounds={[
-                    [23.514644467623427, 89.993267809818], // SW corner
-                    [24.044668432420007, 90.52169954853196] // NE corner
-                ]}
+        [23.514644467623427, 89.993267809818], // SW corner
+        [24.044668432420007, 90.52169954853196] // NE corner
+      ]}
       opacity={0.5}
       zIndex={520}
       attribution="Dhaka Land Cover (processed)"
@@ -346,8 +347,49 @@ function VegetationOverlay({ isVisible }) {
   );
 }
 
+// Air Quality Overlay
+function AirQualityOverlay({ isVisible, data, center }) {
+  if (!isVisible || !data?.current?.aqi) return null;
+
+  return (
+    <Circle
+      center={center}
+      radius={4000}
+      fillColor={
+        data.current.aqi > 100 ? "#ef4444" :
+          data.current.aqi > 50 ? "#f59e0b" :
+            "#22c55e"
+      }
+      fillOpacity={0.25}
+      color={
+        data.current.aqi > 100 ? "#dc2626" :
+          data.current.aqi > 50 ? "#d97706" :
+            "#16a34a"
+      }
+      weight={2}
+    >
+      <Popup>
+        <div>
+          <h4>Air Quality Zone</h4>
+          <p>AQI: {data.current.aqi}</p>
+          <p>Level: {data.current.level}</p>
+          <p>PM2.5: {data.current.pm25}</p>
+          <p>PM1: {data.current.pm1}</p>
+          <p>Humidity: {data.current.humidity}%</p>
+        </div>
+      </Popup>
+    </Circle>
+  );
+}
+
 const DigitalTwin = () => {
-  const { selectedCity, nasaData } = useCityData();
+  // const { selectedCity, nasaData } = useCityData();
+
+
+  const { selectedCity } = useCityData();
+  const [nasaData, setNasaData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const mapRef = useRef(null);
   const [activeLayers, setActiveLayers] = useState({
     satellite: true,
@@ -364,14 +406,12 @@ const DigitalTwin = () => {
       [layer]: !prev[layer],
     }));
   };
-  // const { selectedCity } = useCityData();
-  // const [nasaData, setNasaData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/air_quality_frontend_data.json')
       .then(res => res.json())
       .then(data => {
+        // console.log('Loaded NASA data:', data);
         setNasaData(data);
         setLoading(false);
       })
@@ -443,7 +483,7 @@ const DigitalTwin = () => {
       value: nasaData?.airQuality?.current?.aqi || "--",
       unit: "AQI",
       description: "Atmospheric composition and pollutant levels",
-      source: "TEMPO",
+      source: "OpenAQ",
     },
     {
       key: "elevation",
@@ -539,6 +579,11 @@ const DigitalTwin = () => {
             <VegetationLegend active={activeLayers.vegetation} />
             <LSTLegend active={activeLayers.temperature} />
             <ElevationLegend active={activeLayers.elevation} />
+            <AirQualityOverlay
+              isVisible={activeLayers.airquality}
+              data={nasaData?.airQuality}
+              center={mapCenter}
+            />
           </MapContainer>
         </MapWrapper>
 

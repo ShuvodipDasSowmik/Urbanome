@@ -203,19 +203,24 @@ const DataSources = () => {
     },
     {
       id: 5,
-      title: "TEMPO Air Quality",
-      provider: "NASA TEMPO Mission",
-      description: "High-resolution air quality monitoring for North American cities, tracking pollutants and atmospheric conditions.",
-      icon: <FiDatabase size={24} />,
-      color: "#f59e0b",
-      resolution: "2.1km x 4.4km",
-      frequency: "Hourly",
-      coverage: "North America",
+      title: "OpenAQ Air Quality",
+      provider: "OpenAQ Platform",
+      description: "Global open-source air quality monitoring with real-time and historical data. Provides PM2.5, PM10, NO2, O3, CO, and other pollutants.",
+      icon: <FiDatabase size={24} />, // better suited for air quality
+      color: "#10b981", // green theme for environment
+      resolution: "Varies by station (local sensor resolution)",
+      frequency: "Hourly / Near real-time",
+      coverage: "Global (including Dhaka, Bangladesh)",
       status: "active",
-      url: "https://tempo.si.edu/",
-      applications: ["Air quality assessment", "Health impact studies", "Pollution source tracking"]
+      url: "https://openaq.org/",
+      applications: [
+        "Urban air quality assessment",
+        "Policy and decision-making",
+        "Health and exposure studies",
+        "Environmental research",
+      ],
     },
-    
+
   ];
 
   return (

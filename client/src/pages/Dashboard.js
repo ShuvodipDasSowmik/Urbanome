@@ -712,6 +712,25 @@ function Dashboard() {
             Land Surface Temperature data for urban heat island analysis
           </p>
         </DataSourceCard>
+        
+        {/* OpenAQ Air Quality (external) */}
+        <DataSourceCard
+          color="#805ad5"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          whileHover={{ scale: 1.05 }}
+          onClick={() => window.open('https://openaq.org', '_blank')}
+          style={{ cursor: 'pointer' }}
+        >
+          <DataSourceIcon color="#805ad5">
+            <FiActivity />
+          </DataSourceIcon>
+          <h4 style={{ margin: '0 0 0.5rem 0', color: '#805ad5' }}>OpenAQ Air Quality</h4>
+          <p style={{ margin: 0, fontSize: '0.9rem', color: 'white' }}>
+            Community-driven air quality observations (PM2.5, PM10, NO2, O3, CO) with city-level and station data — complements satellite-derived AQ estimates.
+          </p>
+        </DataSourceCard>
       </DataSourcesGrid>
 
       {/* User Workflow */}

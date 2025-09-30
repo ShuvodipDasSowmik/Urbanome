@@ -5,7 +5,7 @@ import {
   FiHome, 
   FiMap, 
   FiLayers, 
-  FiDollarSign, 
+  FiTrendingUp, 
   FiFileText, 
   FiDatabase, 
   FiUsers
@@ -78,10 +78,10 @@ const Sidebar = () => {
           Intervention Planner
         </SidebarLink>
         
-        {/* <SidebarLink to="/cost-benefit">
-          <FiDollarSign size={20} />
-          Cost-Benefit Analysis
-        </SidebarLink> */}
+         <SidebarLink to="/FutureOverview">
+          <FiTrendingUp size={20} />
+          Future Overview
+        </SidebarLink> 
         
         <SectionTitle>Reports & Data</SectionTitle>
         

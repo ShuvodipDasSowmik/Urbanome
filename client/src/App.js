@@ -16,7 +16,7 @@ import LoadingSpinner from './components/common/LoadingSpinner';
 import Dashboard from './pages/Dashboard';
 import DigitalTwin from './pages/DigitalTwin';
 import InterventionPlanner from './pages/InterventionPlanner';
-import CostBenefitAnalysis from './pages/CostBenefitAnalysis';
+import FutureOverview from './pages/FutureOverview';
 import PolicyBrief from './pages/PolicyBrief';
 import DataSources from './pages/DataSources';
 
@@ -61,7 +61,7 @@ function AppLayout() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/digital-twin" element={<DigitalTwin />} />
             <Route path="/intervention-planner" element={<InterventionPlanner />} />
-            <Route path="/cost-benefit" element={<CostBenefitAnalysis />} />
+            <Route path="/FutureOverview" element={<FutureOverview />} />
             <Route path="/policy-brief" element={<ComingSoon />} />
             <Route path="/data-sources" element={<DataSources />} />
             <Route path='/ngo' element={<ComingSoon />} />

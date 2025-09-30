@@ -202,7 +202,46 @@ const LegendLabels = styled.div`
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.7);
 `;
-
+ const MapButtons = styled.div`
+   position: absolute;
+   top: 10px;
+   left: 50px;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+   z-index: 1000;
+   max-height: 60vh;        // limits height to 60% of viewport
+   overflow-y: auto;        // enables vertical scrolling
+   padding-right: 0.2rem;   // small padding to avoid scrollbar overlap
+ 
+   button {
+     padding: 0.4rem 0.8rem;
+     background: #3b82f6;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     font-size: 0.75rem;
+     cursor: pointer;
+     white-space: nowrap;   // prevents button text wrapping
+     &:hover {
+       background: #2563eb;
+     }
+   }
+ `;
+ 
+ // Thanas for Dhaka City
+ const dhakaThanas = [
+   "Adabor", "Badda", "Bangshal", "Biman Bandar", "Cantonment", "Chak Bazar",
+   "Dakshinkhan", "Darus Salam", "Demra", "Dhanmondi", "Gendaria", "Gulshan",
+   "Hazaribagh", "Jatrabari", "Kadamtali", "Kafrul", "Kalabagan", "Kamrangir Char",
+   "Khilgaon", "Khilkhet", "Kotwali", "Lalbagh", "Mirpur", "Mohammadpur", "Motijheel",
+   "New Market", "Pallabi", "Paltan", "Ramna", "Rampura", "Sabujbagh", "Shah Ali",
+   "Shahbagh", "Sher-e-bangla Nagar", "Shyampur", "Sutrapur", "Tejgaon",
+   "Tejgaon Ind. Area", "Turag", "Uttar Khan", "Uttara"
+ ];
+ 
+ const subregions = ["Dhaka City", "Savar", "Nawabganj", "Keraniganj", "Dohar", "Dhamrai"]
+ 
 // Component to handle map sizing and view
 function MapController({ center, zoom }) {
   const map = useMap();
@@ -311,39 +350,127 @@ function LSTOverlay({ isVisible }) {
 
 // Vegetation (Land Cover) overlay
 function VegetationOverlay({ isVisible }) {
-  const [bounds, setBounds] = useState(null);
+  const [overlayLevel, setOverlayLevel] = useState("dhaka"); 
+  const [selectedSubregion, setSelectedSubregion] = useState(null);
+  const [selectedThana, setSelectedThana] = useState(null);
+  const [showSubregionButtons, setShowSubregionButtons] = useState(false);
+  const [showThanaButtons, setShowThanaButtons] = useState(false);
+  const [bounds, setBounds] = useState([
+    [23.514644467623427, 89.993267809818], 
+    [24.044668432420007, 90.52169954853196],
+  ]);
+
+  const dhakaDistrictBounds = [
+    [23.514644467623427, 89.993267809818],
+    [24.044668432420007, 90.52169954853196],
+  ];
 
   useEffect(() => {
     if (!isVisible) return;
-    fetch("/data/dhaka_elevation_bounds.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setBounds([
-          [data.south, data.west],
-          [data.north, data.east],
-        ]);
-      })
-      .catch(() => {
-        setBounds([
-          [23.4, 90.36],
-          [23.6, 90.6],
-        ]);
-      });
-  }, [isVisible]);
 
-  if (!isVisible || !bounds) return null;
+    async function fetchBounds() {
+      try {
+        if (overlayLevel === "dhaka") {
+          setBounds(dhakaDistrictBounds);
+        } else if (overlayLevel === "subregion" && selectedSubregion) {
+          const res = await fetch(`/data/thana_pngs/${selectedSubregion}_bounds.json`);
+          const data = await res.json();
+          setBounds([data.SW, data.NE]);
+        } else if (overlayLevel === "thana" && selectedThana) {
+          const res = await fetch(`/data/thana_pngs/${selectedThana}_bounds.json`);
+          const data = await res.json();
+          setBounds([data.SW, data.NE]);
+        }
+      } catch (err) {
+        console.error("Failed to load bounds JSON:", err);
+      }
+    }
+
+    fetchBounds();
+  }, [overlayLevel, selectedSubregion, selectedThana, isVisible]);
+
+  if (!isVisible) return null;
+
+  let pngUrl = "/data/dhaka_landcover.png";
+  if (overlayLevel === "subregion" && selectedSubregion) {
+    pngUrl = `/data/thana_pngs/${selectedSubregion}.png`;
+  } else if (overlayLevel === "thana" && selectedThana) {
+    pngUrl = `/data/thana_pngs/${selectedThana}.png`;
+  }
 
   return (
-    <ImageOverlay
-      url="/data/dhaka_landcover.png"
-      bounds={[
-        [23.514644467623427, 89.993267809818], // SW corner
-        [24.044668432420007, 90.52169954853196] // NE corner
-      ]}
-      opacity={0.5}
-      zIndex={520}
-      attribution="Dhaka Land Cover (processed)"
-    />
+    <>
+      <ImageOverlay url={pngUrl} bounds={bounds} opacity={0.7} zIndex={520} />
+
+      <MapButtons>
+        {overlayLevel === "dhaka" && (
+          <button onClick={() => setShowSubregionButtons(!showSubregionButtons)}>
+            Select your area
+          </button>
+        )}
+
+        {showSubregionButtons &&
+          overlayLevel === "dhaka" &&
+          ["Dhaka City", "Savar", "Nawabganj", "Keraniganj", "Dohar", "Dhamrai"].map((area) => (
+            <button
+              key={area}
+              onClick={() => {
+                setSelectedSubregion(area);
+                setOverlayLevel("subregion");
+                setShowSubregionButtons(false);
+              }}
+            >
+              {area.replace("_", " ")}
+            </button>
+          ))}
+
+        {overlayLevel === "subregion" && (
+          <>
+            <button
+              onClick={() => {
+                setOverlayLevel("dhaka");
+                setSelectedSubregion(null);
+                setSelectedThana(null);
+              }}
+            >
+              Back to Dhaka District
+            </button>
+
+            {selectedSubregion === "Dhaka City" && (
+              <button onClick={() => setShowThanaButtons(!showThanaButtons)}>
+                Search your Thanas
+              </button>
+            )}
+
+            {showThanaButtons &&
+              selectedSubregion === "Dhaka City" &&
+              dhakaThanas.map((thana) => (
+                <button
+                  key={thana}
+                  onClick={() => {
+                    setSelectedThana(thana);
+                    setOverlayLevel("thana");
+                    setShowThanaButtons(false);
+                  }}
+                >
+                  {thana}
+                </button>
+              ))}
+          </>
+        )}
+
+        {overlayLevel === "thana" && (
+          <button
+            onClick={() => {
+              setOverlayLevel("subregion");
+              setSelectedThana(null);
+            }}
+          >
+            Back to Dhaka City
+          </button>
+        )}
+      </MapButtons>
+    </>
   );
 }
 

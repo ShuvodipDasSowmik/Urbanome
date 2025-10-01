@@ -105,7 +105,7 @@ const FutureOverview = () => {
       try {
         const greenspace = await loadFile("greenspace.txt");
         const temp = await loadFile("temp.txt");
-        const rainfall = await loadFile("rainfall.txt");
+        const rainfall = await loadFile("Rainfall.txt");
         const windspeed = await loadFile("windspeed.txt");
 
         setData({ greenspace, temp, rainfall, windspeed });

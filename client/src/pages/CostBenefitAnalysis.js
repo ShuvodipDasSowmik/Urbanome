@@ -21,7 +21,7 @@ const Header = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1` 
   color: #1e293b;
   font-size: 2rem;
   font-weight: bold;

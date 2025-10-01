@@ -15,17 +15,17 @@ const Container = styled.div`
 const FutureReport = styled(motion.div)`
   background: white;
   border-radius: 20px;
-  padding: 3rem 4rem;
+  padding: 2rem 3rem;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 700px;
   width: 100%;
 `;
 
 const YearTitle = styled.h2`
   font-size: 1.5rem;
   color: #1e293b;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const Select = styled.select`
@@ -36,20 +36,39 @@ const Select = styled.select`
   margin-bottom: 2rem;
 `;
 
-const GreenspaceValue = styled.div`
-  font-size: 3rem;
+const MetricsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+`;
+
+const MetricBox = styled.div`
+  background: #f9fafb;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+`;
+
+const MetricTitle = styled.h3`
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 0.75rem;
+`;
+
+const MetricValue = styled.div`
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #10b981;
-  margin-bottom: 2rem;
+  color: ${(props) => props.color || "#111827"};
+  margin-bottom: 1rem;
 `;
 
 const DetailsButton = styled.button`
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   background: #3b82f6;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
 
@@ -59,40 +78,57 @@ const DetailsButton = styled.button`
 `;
 
 const FutureOverview = () => {
-  const [dataset, setDataset] = useState([]);
+  const [data, setData] = useState({
+    greenspace: [],
+    temp: [],
+    rainfall: [],
+    windspeed: [],
+  });
   const [selectedYear, setSelectedYear] = useState("2025");
 
-  useEffect(() => {
-    // Read the txt file from public folder
-    fetch("/greenspace.txt")
-      .then((res) => res.text())
-      .then((text) => {
-        const parsed = text
-          .split("\n")
-          .map((line) => {
-            const [year, greenspace] = line.split(",");
-            return { year: year.trim(), greenspace: greenspace.trim() };
-          })
-          .filter((row) =>
-            ["2025", "2026", "2027", "2028", "2029", "2030"].includes(row.year)
-          );
-        setDataset(parsed);
+  const loadFile = async (filename) => {
+    const res = await fetch(`/${filename}`);
+    const text = await res.text();
+    return text
+      .split("\n")
+      .map((line) => {
+        const [year, value] = line.split(",");
+        return { year: year.trim(), value: value.trim() };
       })
-      .catch((err) => console.error("Failed to load greenspace data:", err));
+      .filter((row) =>
+        ["2025", "2026", "2027", "2028", "2029", "2030"].includes(row.year)
+      );
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const greenspace = await loadFile("greenspace.txt");
+        const temp = await loadFile("temp.txt");
+        const rainfall = await loadFile("rainfall.txt");
+        const windspeed = await loadFile("windspeed.txt");
+
+        setData({ greenspace, temp, rainfall, windspeed });
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const currentData = dataset.find((row) => row.year === selectedYear);
+  const getCurrent = (dataset) =>
+    dataset.find((row) => row.year === selectedYear)?.value || "N/A";
 
-  const handleSeeDetails = () => {
-    // Open the PDF in a new tab
-    window.open("/Greenspace.pdf", "_blank");
+  const handleSeeDetails = (pdfName) => {
+    window.open(`/${pdfName}`, "_blank");
   };
 
   return (
     <Container>
       <FutureReport
         key={selectedYear}
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
@@ -103,22 +139,55 @@ const FutureOverview = () => {
           value={selectedYear}
           onChange={(e) => setSelectedYear(e.target.value)}
         >
-          {dataset.map((row) => (
+          {data.greenspace.map((row) => (
             <option key={row.year} value={row.year}>
               {row.year}
             </option>
           ))}
         </Select>
 
-        {/* Greenspace */}
-        <GreenspaceValue>
-          {currentData ? currentData.greenspace : "N/A"} Greenspace
-        </GreenspaceValue>
+        {/* Metric Boxes */}
+        <MetricsGrid>
+          <MetricBox>
+            <MetricTitle>Greenspace(Grassland+Trees)</MetricTitle>
+            <MetricValue color="#10b981">
+              {getCurrent(data.greenspace)}%
+            </MetricValue>
+            <DetailsButton onClick={() => handleSeeDetails("Greenspace.pdf")}>
+              See Details
+            </DetailsButton>
+          </MetricBox>
 
-        {/* See Details Button */}
-        <DetailsButton onClick={handleSeeDetails}>
-          See Details
-        </DetailsButton>
+          <MetricBox>
+            <MetricTitle>Average Temperature</MetricTitle>
+            <MetricValue color="#f97316">
+              {getCurrent(data.temp)}°C
+            </MetricValue>
+            <DetailsButton onClick={() => handleSeeDetails("Temp.pdf")}>
+              See Details
+            </DetailsButton>
+          </MetricBox>
+
+          <MetricBox>
+            <MetricTitle>Average Rainfall</MetricTitle>
+            <MetricValue color="#3b82f6">
+              {getCurrent(data.rainfall)} mm
+            </MetricValue>
+            <DetailsButton onClick={() => handleSeeDetails("Rainfall.pdf")}>
+              See Details
+            </DetailsButton>
+          </MetricBox>
+
+          <MetricBox>
+            <MetricTitle>Average Windspeed</MetricTitle>
+            <MetricValue color="#6366f1">
+              {getCurrent(data.windspeed)} km/h
+            </MetricValue>
+            <DetailsButton onClick={() => handleSeeDetails("Windspeed.pdf")}>
+              See Details
+            </DetailsButton>
+          </MetricBox>
+        </MetricsGrid>
       </FutureReport>
     </Container>
   );

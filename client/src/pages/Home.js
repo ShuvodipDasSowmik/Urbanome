@@ -15,10 +15,15 @@ import {
   FiBarChart2,
   FiCloud,
   FiThermometer,
-  FiActivity
+  FiActivity,
+  FiMenu, // Added for mobile menu icon
+  FiX // Added for mobile menu close icon
 } from 'react-icons/fi';
 
-// Keyframe Animations
+// Define mobile breakpoint
+const MOBILE_BREAKPOINT = '768px';
+
+// Keyframe Animations (No changes needed, they are independent of layout)
 const float = keyframes`
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   25% { transform: translateY(-20px) rotate(2deg); }
@@ -66,7 +71,10 @@ const drawPath = keyframes`
   }
 `;
 
-// Styled Components
+// =========================================================================
+// UPDATED STYLED COMPONENTS FOR RESPONSIVENESS
+// =========================================================================
+
 const HomeContainer = styled.div`
   min-height: 100vh;
   background: linear-gradient(-45deg, #0f0f23, #1a1a3e, #2d1b69, #4c1d95);
@@ -125,6 +133,10 @@ const NavBar = styled.nav`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    padding: 0 1.5rem;
+  }
 `;
 
 const Logo = styled(motion.div)`
@@ -146,8 +158,27 @@ const NavMenu = styled.div`
   gap: 2rem;
   align-items: center;
   
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    // Mobile menu styling
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 5rem;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(30px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
+    transition: transform 0.4s ease-in-out;
+    z-index: 100;
+
+    & > a {
+        font-size: 1.5rem;
+        padding: 1rem 0;
+    }
   }
 `;
 
@@ -179,6 +210,26 @@ const NavItem = styled.a`
       width: 100%;
     }
   }
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    &::after {
+        bottom: 0px; // Adjust underline position for mobile
+    }
+  }
+`;
+
+const HamburgerButton = styled.button`
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 101;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}) {
+        display: block;
+    }
 `;
 
 const HeroSection = styled.section`
@@ -189,6 +240,11 @@ const HeroSection = styled.section`
   padding: 4rem 2rem;
   text-align: center;
   position: relative;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    padding: 2rem 1rem;
+    padding-top: 6rem; /* Add space for fixed header on mobile */
+  }
 `;
 
 const HeroContent = styled.div`
@@ -208,6 +264,11 @@ const HeroTitle = styled(motion.h1)`
   animation: ${gradientShift} 10s ease infinite;
   line-height: 1.1;
   text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+
+  span {
+    font-size: 0.8em;
+    font-weight: 800;
+  }
 `;
 
 const HeroSubtitle = styled(motion.p)`
@@ -218,6 +279,11 @@ const HeroSubtitle = styled(motion.p)`
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const CTAContainer = styled(motion.div)`
@@ -226,6 +292,12 @@ const CTAContainer = styled(motion.div)`
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 4rem;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
 `;
 
 const PrimaryButton = styled(motion.button)`
@@ -240,6 +312,12 @@ const PrimaryButton = styled(motion.button)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+
+  @media (max-width: 500px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
   
   &::before {
     content: '';
@@ -277,6 +355,12 @@ const SecondaryButton = styled(motion.button)`
   cursor: pointer;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+
+  @media (max-width: 500px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
   
   &:hover {
     border-color: #667eea;
@@ -292,6 +376,11 @@ const FeatureGrid = styled(motion.div)`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+    padding: 0 1rem;
+  }
 `;
 
 const FeatureCard = styled(motion.div)`
@@ -303,6 +392,10 @@ const FeatureCard = styled(motion.div)`
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    padding: 2rem 1.5rem;
+  }
   
   &::before {
     content: '';
@@ -369,6 +462,11 @@ const StatsSection = styled(motion.section)`
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   margin-top: 4rem;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    padding: 4rem 1rem;
+    margin-top: 2rem;
+  }
 `;
 
 const StatsGrid = styled.div`
@@ -377,6 +475,15 @@ const StatsGrid = styled.div`
   gap: 3rem;
   max-width: 1200px;
   margin: 3rem auto 0;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
 `;
 
 const StatItem = styled(motion.div)`
@@ -391,6 +498,10 @@ const StatNumber = styled.div`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 2.5rem;
+  }
 `;
 
 const StatLabel = styled.div`
@@ -398,6 +509,10 @@ const StatLabel = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 0.8rem;
+  }
 `;
 
 const GlowOrb = styled(motion.div)`
@@ -410,6 +525,11 @@ const GlowOrb = styled(motion.div)`
   animation: ${drift} ${props => props.duration || '20s'} ease-in-out infinite;
   animation-delay: ${props => props.delay || '0s'};
   z-index: 1;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const Footer = styled(motion.footer)`
@@ -420,6 +540,10 @@ const Footer = styled(motion.footer)`
   text-align: center;
   position: relative;
   z-index: 10;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    padding: 2rem 1rem 1rem;
+  }
   
   &::before {
     content: '';
@@ -444,6 +568,10 @@ const TeamName = styled(motion.div)`
   background-clip: text;
   animation: ${gradientShift} 8s ease infinite;
   text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 2rem;
+  }
 `;
 
 const TeamDescription = styled(motion.p)`
@@ -454,6 +582,11 @@ const TeamDescription = styled(motion.p)`
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Copyright = styled(motion.div)`
@@ -462,11 +595,22 @@ const Copyright = styled(motion.div)`
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 2rem;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}) {
+    font-size: 0.75rem;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
 `;
+
+// =========================================================================
+// REACT COMPONENT
+// =========================================================================
 
 function Home() {
   const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // New state for mobile menu
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -479,6 +623,11 @@ function Home() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleNavigate = (path) => {
+    setIsMenuOpen(false); // Close menu on navigation
+    navigate(path);
+  };
 
   const features = [
     {
@@ -521,7 +670,7 @@ function Home() {
 
   return (
     <HomeContainer>
-      {/* Animated Background Elements */}
+      {/* Animated Background Elements (Unchanged) */}
       <BackgroundSVG viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -570,7 +719,7 @@ function Home() {
         </circle>
       </BackgroundSVG>
 
-      {/* Floating Glowing Orbs */}
+      {/* Floating Glowing Orbs (Unchanged, but scale down on mobile via GlowOrb styling) */}
       <GlowOrb 
         size="300px"
         color="rgba(102, 126, 234, 0.2)"
@@ -593,7 +742,7 @@ function Home() {
         style={{top: '30%', left: '50%'}}
       />
 
-      {/* Floating Icon Elements */}
+      {/* Floating Icon Elements (Unchanged) */}
       <FloatingElement 
         duration="8s" 
         delay="0s"
@@ -628,12 +777,20 @@ function Home() {
               <FiGlobe color='white' size={28} />
               Urbanome
             </Logo>
-            <NavMenu>
-              <NavItem onClick={() => navigate('/dashboard')}>Dashboard</NavItem>
-              <NavItem onClick={() => navigate('/digital-twin')}>Digital Twin</NavItem>
-              <NavItem onClick={() => navigate('/intervention-planner')}>Interventions</NavItem>
-              {/* <NavItem onClick={() => navigate('/analysis')}>Analysis</NavItem> */}
+            
+            {/* Desktop Menu */}
+            <NavMenu isOpen={isMenuOpen}>
+              <NavItem onClick={() => handleNavigate('/dashboard')}>Dashboard</NavItem>
+              <NavItem onClick={() => handleNavigate('/digital-twin')}>Digital Twin</NavItem>
+              <NavItem onClick={() => handleNavigate('/intervention-planner')}>Interventions</NavItem>
+              {/* <NavItem onClick={() => handleNavigate('/analysis')}>Analysis</NavItem> */}
             </NavMenu>
+
+            {/* Hamburger Button for Mobile */}
+            <HamburgerButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <FiX /> : <FiMenu />}
+            </HamburgerButton>
+
           </NavBar>
         </Header>
 
@@ -647,7 +804,7 @@ function Home() {
             >
               Transforming Cities with
               <br />
-              <span style={{fontSize: '0.8em', fontWeight: '800'}}>NASA Earth Data</span>
+              <span>NASA Earth Data</span>
             </HeroTitle>
             
             <HeroSubtitle
@@ -666,14 +823,14 @@ function Home() {
               transition={{ duration: 1, delay: 0.6 }}
             >
               <PrimaryButton
-                onClick={() => navigate('/digital-twin')}
+                onClick={() => handleNavigate('/digital-twin')}
                 whileHover={{ boxShadow: "0 15px 40px rgba(102, 126, 234, 0.5)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 Explore Digital Twin <FiArrowRight style={{marginLeft: '0.5rem'}} />
               </PrimaryButton>
               <SecondaryButton
-                onClick={() => navigate('/dashboard')}
+                onClick={() => handleNavigate('/dashboard')}
                 whileHover={{ borderColor: "#667eea" }}
                 whileTap={{ scale: 0.98 }}
               >

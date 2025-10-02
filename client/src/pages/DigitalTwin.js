@@ -34,17 +34,24 @@ L.Icon.Default.mergeOptions({
 });
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
-  overflow: hidden;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 100vh;
+  }
 `;
 
 const Header = styled.div`
   padding: 1rem 2rem;
   flex-shrink: 0;
-  height: 120px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -57,19 +64,39 @@ const Title = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
   color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 `;
 
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 320px;
+  gap: 1rem;
+  padding: 0 2rem 2rem 2rem;
   flex: 1;
-  height: 100vh
-  min-height: 600px;
+  min-height: 0;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 280px;
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem 1rem 1rem;
+  }
 `;
 
 const MapWrapper = styled(motion.div)`
@@ -80,13 +107,24 @@ const MapWrapper = styled(motion.div)`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
-  height: 100%;
-  min-height: 500px;
+  height: calc(100vh - 200px);
+  min-height: 400px;
 
   .leaflet-container {
     width: 100%;
     height: 100%;
     border-radius: 12px;
+  }
+
+  @media (max-width: 768px) {
+    height: 400px;
+    min-height: 350px;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    height: 350px;
+    min-height: 300px;
   }
 `;
 
@@ -98,7 +136,16 @@ const ControlPanel = styled(motion.div)`
   padding: 1.25rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
-  max-height: 100%;
+  height: calc(100vh - 200px);
+  min-height: 400px;
+
+  @media (max-width: 768px) {
+    height: auto;
+    max-height: none;
+    min-height: auto;
+    padding: 1rem;
+    border-radius: 8px;
+  }
 `;
 
 const PanelTitle = styled.h3`
@@ -106,10 +153,19 @@ const PanelTitle = styled.h3`
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const LayerControl = styled.div`
   margin-bottom: 1.25rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const LayerItem = styled.div`
@@ -128,12 +184,22 @@ const LayerItem = styled.div`
     background: rgba(102, 126, 234, 0.1);
     border-color: #667eea;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.625rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const LayerIcon = styled.div`
   margin-right: 0.75rem;
   margin-top: 0.125rem;
   color: ${(props) => (props.active ? "#667eea" : "rgba(255, 255, 255, 0.6)")};
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    margin-right: 0.5rem;
+  }
 `;
 
 const LayerLabel = styled.div`
@@ -141,12 +207,20 @@ const LayerLabel = styled.div`
   color: ${(props) => (props.active ? "white" : "rgba(255, 255, 255, 0.8)")};
   font-weight: ${(props) => (props.active ? "600" : "500")};
   font-size: 0.875rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const LayerValue = styled.div`
   font-size: 0.8rem;
   font-weight: 600;
   color: ${(props) => (props.active ? "#667eea" : "rgba(255, 255, 255, 0.7)")};
+  
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const LayerDescription = styled.div`
@@ -154,6 +228,11 @@ const LayerDescription = styled.div`
   color: rgba(255, 255, 255, 0.6);
   margin-top: 0.25rem;
   line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+    line-height: 1.25;
+  }
 `;
 
 const DataSource = styled.div`
@@ -165,20 +244,21 @@ const DataSource = styled.div`
   border-radius: 4px;
   margin-top: 0.4rem;
   display: inline-block;
-`;
 
-// const ElevationLegend = styled.div`
-//   background: white;
-//   border-radius: 8px;
-//   padding: 1rem;
-//   margin-top: 1rem;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-// `;
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+  }
+`;
 
 const LegendTitle = styled.h4`
   margin: 0 0 0.5rem 0;
   color: white;
   font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const LegendGradient = styled.div`
@@ -194,6 +274,10 @@ const LegendGradient = styled.div`
   );
   border-radius: 4px;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    height: 16px;
+  }
 `;
 
 const LegendLabels = styled.div`
@@ -201,47 +285,90 @@ const LegendLabels = styled.div`
   justify-content: space-between;
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
 `;
- const MapButtons = styled.div`
-   position: absolute;
-   top: 10px;
-   left: 50px;
-   display: flex;
-   flex-direction: column;
-   gap: 0.5rem;
-   z-index: 1000;
-   max-height: 60vh;        // limits height to 60% of viewport
-   overflow-y: auto;        // enables vertical scrolling
-   padding-right: 0.2rem;   // small padding to avoid scrollbar overlap
- 
-   button {
-     padding: 0.4rem 0.8rem;
-     background: #3b82f6;
-     color: white;
-     border: none;
-     border-radius: 6px;
-     font-size: 0.75rem;
-     cursor: pointer;
-     white-space: nowrap;   // prevents button text wrapping
-     &:hover {
-       background: #2563eb;
-     }
-   }
- `;
- 
- // Thanas for Dhaka City
- const dhakaThanas = [
-   "Adabor", "Badda", "Bangshal", "Biman Bandar", "Cantonment", "Chak Bazar",
-   "Dakshinkhan", "Darus Salam", "Demra", "Dhanmondi", "Gendaria", "Gulshan",
-   "Hazaribagh", "Jatrabari", "Kadamtali", "Kafrul", "Kalabagan", "Kamrangir Char",
-   "Khilgaon", "Khilkhet", "Kotwali", "Lalbagh", "Mirpur", "Mohammadpur", "Motijheel",
-   "New Market", "Pallabi", "Paltan", "Ramna", "Rampura", "Sabujbagh", "Shah Ali",
-   "Shahbagh", "Sher-e-bangla Nagar", "Shyampur", "Sutrapur", "Tejgaon",
-   "Tejgaon Ind. Area", "Turag", "Uttar Khan", "Uttara"
- ];
- 
- const subregions = ["Dhaka City", "Savar", "Nawabganj", "Keraniganj", "Dohar", "Dhamrai"]
- 
+
+const MapButtons = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+
+  button {
+    padding: 0.4rem 0.8rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      background: #2563eb;
+    }
+  }
+
+  @media (max-width: 768px) {
+    left: 10px;
+    top: 10px;
+    max-height: 50vh;
+    max-width: calc(100% - 20px);
+
+    button {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.7rem;
+      white-space: normal;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    button {
+      font-size: 0.65rem;
+      padding: 0.45rem 0.6rem;
+    }
+  }
+
+  /* Custom scrollbar for mobile */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 2px;
+  }
+`;
+
+// Thanas for Dhaka City
+const dhakaThanas = [
+  "Adabor", "Badda", "Bangshal", "Biman Bandar", "Cantonment", "Chak Bazar",
+  "Dakshinkhan", "Darus Salam", "Demra", "Dhanmondi", "Gendaria", "Gulshan",
+  "Hazaribagh", "Jatrabari", "Kadamtali", "Kafrul", "Kalabagan", "Kamrangir Char",
+  "Khilgaon", "Khilkhet", "Kotwali", "Lalbagh", "Mirpur", "Mohammadpur", "Motijheel",
+  "New Market", "Pallabi", "Paltan", "Ramna", "Rampura", "Sabujbagh", "Shah Ali",
+  "Shahbagh", "Sher-e-bangla Nagar", "Shyampur", "Sutrapur", "Tejgaon",
+  "Tejgaon Ind. Area", "Turag", "Uttar Khan", "Uttara"
+];
+
+const subregions = ["Dhaka City", "Savar", "Nawabganj", "Keraniganj", "Dohar", "Dhamrai"];
+
 // Component to handle map sizing and view
 function MapController({ center, zoom }) {
   const map = useMap();
@@ -257,7 +384,6 @@ function MapController({ center, zoom }) {
       map.invalidateSize();
     }, 500);
 
-    // Handle window resize
     const handleResize = () => {
       setTimeout(() => {
         map.invalidateSize();
@@ -350,13 +476,13 @@ function LSTOverlay({ isVisible }) {
 
 // Vegetation (Land Cover) overlay
 function VegetationOverlay({ isVisible }) {
-  const [overlayLevel, setOverlayLevel] = useState("dhaka"); 
+  const [overlayLevel, setOverlayLevel] = useState("dhaka");
   const [selectedSubregion, setSelectedSubregion] = useState(null);
   const [selectedThana, setSelectedThana] = useState(null);
   const [showSubregionButtons, setShowSubregionButtons] = useState(false);
   const [showThanaButtons, setShowThanaButtons] = useState(false);
   const [bounds, setBounds] = useState([
-    [23.514644467623427, 89.993267809818], 
+    [23.514644467623427, 89.993267809818],
     [24.044668432420007, 90.52169954853196],
   ]);
 
@@ -411,7 +537,7 @@ function VegetationOverlay({ isVisible }) {
 
         {showSubregionButtons &&
           overlayLevel === "dhaka" &&
-          ["Dhaka City", "Savar", "Nawabganj", "Keraniganj", "Dohar", "Dhamrai"].map((area) => (
+          subregions.map((area) => (
             <button
               key={area}
               onClick={() => {
@@ -510,9 +636,6 @@ function AirQualityOverlay({ isVisible, data, center }) {
 }
 
 const DigitalTwin = () => {
-  // const { selectedCity, nasaData } = useCityData();
-
-
   const { selectedCity } = useCityData();
   const [nasaData, setNasaData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -538,7 +661,6 @@ const DigitalTwin = () => {
     fetch('/air_quality_frontend_data.json')
       .then(res => res.json())
       .then(data => {
-        // console.log('Loaded NASA data:', data);
         setNasaData(data);
         setLoading(false);
       })
@@ -550,7 +672,7 @@ const DigitalTwin = () => {
 
   const mapCenter = selectedCity?.coordinates
     ? selectedCity.coordinates
-    : [23.8103, 90.4125]; // Dhaka default
+    : [23.8103, 90.4125];
 
   const mapZoom = 11;
 
@@ -571,13 +693,6 @@ const DigitalTwin = () => {
   }, []);
 
   const layers = [
-    // {
-    //   key: 'satellite',
-    //   label: 'Satellite Imagery',
-    //   icon: <FiMap size={18} />,
-    //   description: "High-resolution satellite imagery",
-    //   source: "Carto Voyager",
-    // },
     {
       key: "temperature",
       label: "Land Surface Temperature",
@@ -594,15 +709,6 @@ const DigitalTwin = () => {
       description: "Vegetation health and density measurement",
       source: "Sentinel-2",
     },
-    // {
-    //   key: "precipitation",
-    //   label: "Precipitation (IMERG)",
-    //   icon: <FiDroplet size={18} />,
-    //   value: nasaData?.precipitation?.current?.value || "--",
-    //   unit: "mm/day",
-    //   description: "Real-time precipitation measurements",
-    //   source: "GPM IMERG",
-    // },
     {
       key: "airquality",
       label: "Air Quality",
@@ -620,7 +726,6 @@ const DigitalTwin = () => {
       source: "NASA SRTM",
     },
   ];
-
 
   if (loading) {
     return (
@@ -645,12 +750,12 @@ const DigitalTwin = () => {
 
   return (
     <Container>
-      {/* <Header>
+      <Header>
         <Title>City Digital Twin</Title>
         <Subtitle>
           Interactive visualization of NASA Earth observation data
         </Subtitle>
-      </Header> */}
+      </Header>
 
       <ContentGrid>
         <MapWrapper
@@ -668,7 +773,6 @@ const DigitalTwin = () => {
           >
             <MapController center={mapCenter} zoom={mapZoom} />
 
-            {/* Basemap */}
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -676,16 +780,6 @@ const DigitalTwin = () => {
               maxZoom={20}
             />
 
-            {/* Satellite layer overlay */}
-            {/* {activeLayers.satellite && (
-              <TileLayer
-                attribution='&copy; <a href="https://www.esri.com/">Esri</a>'
-                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                opacity={0.7}
-              />
-            )} */}
-
-            {/* City marker */}
             <Marker position={mapCenter}>
               <Popup>
                 <div>
@@ -699,7 +793,6 @@ const DigitalTwin = () => {
               </Popup>
             </Marker>
 
-            {/* Overlays */}
             <ElevationOverlay isVisible={activeLayers.elevation} />
             <LSTOverlay isVisible={activeLayers.temperature} />
             <VegetationOverlay isVisible={activeLayers.vegetation} />
@@ -745,8 +838,6 @@ const DigitalTwin = () => {
               </LayerItem>
             ))}
           </LayerControl>
-
-
         </ControlPanel>
       </ContentGrid>
     </Container>

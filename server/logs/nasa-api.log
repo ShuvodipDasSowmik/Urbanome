@@ -1311,3 +1311,16 @@
 
 
 
+
+{"timestamp":"2025-10-02 00:25:17","level":"info","message":"NASA API Request: GET https://power.larc.nasa.gov/api/temporal/daily/point","service":"nasa-healthy-cities","version":"1.0.0"}
+{"timestamp":"2025-10-02 00:25:17","level":"info","message":"NASA API Request: GET https://power.larc.nasa.gov/api/temporal/daily/point","service":"nasa-healthy-cities","version":"1.0.0"}
+{"timestamp":"2025-10-02 00:25:17","level":"error","message":"NASA API Response Error: Request failed with status code 422","service":"nasa-healthy-cities","version":"1.0.0","url":"https://power.larc.nasa.gov/api/temporal/daily/point","status":422}
+{"timestamp":"2025-10-02 00:25:17","level":"warn","message":"NASA API failed, providing mock precipitation data:","service":"nasa-healthy-cities","version":"1.0.0"}
+{"timestamp":"2025-10-02 00:25:18","level":"error","message":"NASA API Response Error: Request failed with status code 422","service":"nasa-healthy-cities","version":"1.0.0","url":"https://power.larc.nasa.gov/api/temporal/daily/point","status":422}
+{"timestamp":"2025-10-02 00:25:18","level":"warn","message":"NASA API failed, providing mock data:","service":"nasa-healthy-cities","version":"1.0.0"}
+
+
+
+
+
+

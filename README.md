@@ -38,12 +38,11 @@ Climate change brings new complexities to maintaining society and environmental 
 - **SRTM**: Shuttle Radar Topography Mission elevation data
 - **OpenAQ**: Air quality measurements
 
-### Data Sources Details
-- **ECOSTRESS**: Collected by ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station.
-- **Sentinel-2**: European Space Agency Sentinel-2 Mission.
-- **SRTM**: NASA Shuttle Radar Topography Mission.
-- **OpenAQ**: Global open-source air quality monitoring with real-time and historical data. Provides PM2.5, PM10, NO2, O3, CO, and other pollutants.
-  
+### 🌐Data Sources Details
+- **ECOSTRESS**: The ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station, a NASA mission mounted on the International Space Station (ISS). It measures surface temperature to study plant water use, heat stress, and impacts of climate variability.
+- **Sentinel-2**: An Earth observation mission of the European Space Agency (ESA) under the Copernicus Programme. While developed and operated by ESA, NASA contributes through ground station support, global data distribution, and collaborative research efforts.
+- **SRTM**: The Shuttle Radar Topography Mission, a joint project of NASA and the National Geospatial-Intelligence Agency (NGA). Flown aboard the Space Shuttle Endeavour in 2000, it collected near-global digital elevation data to create one of the most complete high-resolution topographic databases of Earth.
+- **OpenAQ**: A global open-source air quality platform providing real-time and historical data. It aggregates measurements of pollutants such as PM2.5, PM10, NO₂, O₃, CO, and others from monitoring stations worldwide to support research, policy, and public awareness.  
   
 ### 🛠 Tech Stack
 - **Frontend**: React.js with modern hooks and context

@@ -11,10 +11,10 @@ Climate change brings new complexities to maintaining society and environmental 
 
 #### 1. City Digital Twin
 - **Heat Monitoring**: ECOSTRESS Land Surface Temperature
-- **Flood Risk Assessment**: GPM IMERG precipitation data + SRTM elevation
-- **Air Quality Tracking**: TEMPO air quality data (for North America)
-- **Green Space Analysis**: NDVI vegetation indices
-
+- **Flood Risk Assessment**: SRTM elevation Data
+- **Air Quality Tracking**: OpenAQ Air Quality Data
+- **Green Space Analysis**: Sentinel-2 NDVI vegetation indices
+ 
 #### 2. Intervention Simulator
 - **Tree Planting**: Impact on urban heat island effect
 - **Cool Roofs**: Temperature reduction modeling
@@ -28,12 +28,11 @@ Climate change brings new complexities to maintaining society and environmental 
 - Social benefit metrics
 
 ### 📊 NASA Data Sources
-- **GPM IMERG**: Precipitation data for flood risk assessment
-- **MODIS/VIIRS LST**: Land Surface Temperature for heat mapping
-- **NDVI**: Normalized Difference Vegetation Index for green space analysis
+- **ECOSTRESS**: Land Surface Temperature for heat mapping
+- **Sentinel-2**: Normalized Difference Vegetation Index for green space analysis
 - **SRTM**: Shuttle Radar Topography Mission elevation data
-- **TEMPO**: Air quality measurements (North America)
-
+- **OpenAQ**: Air quality measurements
+  
 ### 🛠 Tech Stack
 - **Frontend**: React.js with modern hooks and context
 - **Backend**: Express.js with RESTful APIs
@@ -51,6 +50,11 @@ nasa-healthy-cities/
 ├── docs/                   # Documentation
 └── deployment/            # Docker and deployment configs
 ```
+## Data Sources Details
+**ECOSTRESS**: Collected by ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station.
+ **Sentinel-2**: European Space Agency Sentinel-2 Mission.
+ **SRTM**: NASA Shuttle Radar Topography Mission.
+ **OpenAQ**: Global open-source air quality monitoring with real-time and historical data. Provides PM2.5, PM10, NO2, O3, CO, and other pollutants.
 
 ### 🌟 Deliverables
 1. **Interactive City Dashboard**: Real-time environmental monitoring

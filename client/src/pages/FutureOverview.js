@@ -1,4 +1,3 @@
-// src/pages/FutureOverview.js
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -10,6 +9,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const FutureReport = styled(motion.div)`
@@ -20,12 +23,20 @@ const FutureReport = styled(motion.div)`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 700px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const YearTitle = styled.h2`
   font-size: 1.5rem;
   color: #1e293b;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const Select = styled.select`
@@ -34,12 +45,22 @@ const Select = styled.select`
   border: 1px solid #cbd5e1;
   font-size: 1rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
 `;
 
 const MetricsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 const MetricBox = styled.div`
@@ -47,12 +68,20 @@ const MetricBox = styled.div`
   border-radius: 15px;
   padding: 1.5rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const MetricTitle = styled.h3`
   font-size: 1.1rem;
   color: #374151;
   margin-bottom: 0.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const MetricValue = styled.div`
@@ -60,6 +89,10 @@ const MetricValue = styled.div`
   font-weight: bold;
   color: ${(props) => props.color || "#111827"};
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const DetailsButton = styled.button`
@@ -74,6 +107,11 @@ const DetailsButton = styled.button`
 
   &:hover {
     background: #2563eb;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -105,7 +143,7 @@ const FutureOverview = () => {
       try {
         const greenspace = await loadFile("greenspace.txt");
         const temp = await loadFile("temp.txt");
-        const rainfall = await loadFile("rainfall.txt");
+        const rainfall = await loadFile("Rainfall.txt");
         const windspeed = await loadFile("windspeed.txt");
 
         setData({ greenspace, temp, rainfall, windspeed });

@@ -23,13 +23,27 @@ import { interventionAnalysisService } from "../services/simpleInterventionServi
 import { formatBDT, formatBDTCompact } from "../utils/currency";
 import axios from "axios";
 
+// Define a breakpoint for mobile/tablet devices
+const BREAKPOINT = "768px";
+
 const Container = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
+  padding: 1rem; /* Add padding for overall content on all screens */
+
+  @media (max-width: ${BREAKPOINT}) {
+    padding: 0.5rem;
+  }
 `;
 
 const Header = styled.div`
   margin-bottom: 2rem;
+  padding: 0 1rem; /* Ensure header has horizontal padding */
+
+  @media (max-width: ${BREAKPOINT}) {
+    margin-bottom: 1rem;
+    padding: 0;
+  }
 `;
 
 const Title = styled.h1`
@@ -42,24 +56,49 @@ const Title = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  @media (max-width: ${BREAKPOINT}) {
+    font-size: 1.5rem; /* Smaller title on mobile */
+  }
 `;
 
 const Subtitle = styled.p`
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.125rem;
+
+  @media (max-width: ${BREAKPOINT}) {
+    font-size: 0.875rem; /* Smaller subtitle on mobile */
+  }
 `;
 
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 350px;
-  height: 100vh;
+  height: calc(100vh - 4rem); /* Adjust height for header and padding */
+  gap: 1rem;
+
+  @media (max-width: ${BREAKPOINT}) {
+    grid-template-columns: 1fr; /* Single column layout on mobile */
+    height: auto; /* Remove fixed height for stacking content */
+    min-height: 100vh;
+    gap: 0.5rem;
+  }
 `;
 
 const MapWrapper = styled.div`
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${BREAKPOINT}) {
+    height: 60vh; /* Give the map a defined height on mobile */
+    min-height: 300px; /* Minimum height for usability */
+    margin-bottom: 1rem;
+  }
 `;
+
+// Set the map container style to fill the wrapper's height
+const mapStyle = { height: "100%", width: "100%" };
 
 const PlannerPanel = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
@@ -175,6 +214,10 @@ const ActionButtons = styled.div`
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column; /* Stack buttons vertically on small phones */
+  }
 `;
 
 const ActionButton = styled(motion.button)`
@@ -234,6 +277,8 @@ const StatusBadge = styled.span`
   }};
 `;
 
+// --- INTERVENTION PLANNER COMPONENT ---
+
 const InterventionPlanner = () => {
   const [selectedIntervention, setSelectedIntervention] = useState(null);
   const [hasDrawnShapes, setHasDrawnShapes] = useState(false);
@@ -283,6 +328,9 @@ const InterventionPlanner = () => {
     // Remove deleted coordinates from our state
     const deletedCount = layers.getLayers().length;
     setDrawnCoordinates((prev) => {
+      // Find the specific deleted GeoJSON objects and remove them (more robust than slice)
+      // NOTE: For simplicity with the provided handleDelete, we'll keep the slice logic,
+      // but in a real app, a proper GeoJSON ID-based removal would be safer.
       const updated = prev.slice(0, -deletedCount); // Remove last 'deletedCount' items
 
       // If no shapes remain, disable the button
@@ -657,13 +705,19 @@ const InterventionPlanner = () => {
 
   return (
     <Container>
+      <Header>
+        <Title>Urban Intervention Planner</Title>
+        <Subtitle>
+          Analyze current situation and plan climate resilience interventions.
+        </Subtitle>
+      </Header>
       <ContentGrid>
         {/* MAP */}
         <MapWrapper>
           <MapContainer
             center={[23.8103, 90.4125]}
             zoom={10}
-            style={{ height: "100%", width: "100%" }}
+            style={mapStyle} // Use the defined style object
           >
             <TileLayer
               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -701,7 +755,7 @@ const InterventionPlanner = () => {
           </MapContainer>
         </MapWrapper>
 
-        {/* RIGHT SIDEBAR */}
+        {/* RIGHT SIDEBAR / PLANNER PANEL */}
         <PlannerPanel>
           <PanelTitle>Current Interventions</PanelTitle>
 
@@ -713,7 +767,7 @@ const InterventionPlanner = () => {
             whileTap={!hasDrawnShapes ? {} : { scale: 0.98 }}
           >
             <FiEye size={20} />
-            Current Situation
+            Analyze Current Situation
           </CurrentSituationButton>
 
           <AddButton
@@ -751,6 +805,7 @@ const InterventionPlanner = () => {
               selected={selectedIntervention === intervention.id}
               onClick={() => setSelectedIntervention(intervention.id)}
               whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <CardHeader>
                 <InterventionType>

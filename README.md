@@ -27,16 +27,27 @@ Climate change brings new complexities to maintaining society and environmental 
 - Environmental impact quantification
 - Social benefit metrics
 
+#### 4. Future Overview
+- **Greenspace Analysis**: Forecasting the percentage of greenspace (grasses and trees) for the next five years using regression models. The analysis is based on multi-temporal GeoTIFF images (1990–2025) obtained from Landsat 5, 7, and 8 satellites.  
+- **Rainfall and Windspeed**: Estimating future average annual rainfall and windspeed using a polynomial regression model trained on 17 years of historical climate data.  
+- **Temperature**: Predicting future average annual temperature by incorporating 17 years of historical temperature, rainfall, and windspeed data into a regression model. The predicted rainfall and windspeed values are also used as key predictors in the temperature model for improved accuracy.
+
 ### 📊 NASA Data Sources
 - **ECOSTRESS**: Land Surface Temperature for heat mapping
 - **Sentinel-2**: Normalized Difference Vegetation Index for green space analysis
 - **SRTM**: Shuttle Radar Topography Mission elevation data
 - **OpenAQ**: Air quality measurements
+
+### Data Sources Details
+- **ECOSTRESS**: Collected by ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station.
+- **Sentinel-2**: European Space Agency Sentinel-2 Mission.
+- **SRTM**: NASA Shuttle Radar Topography Mission.
+- **OpenAQ**: Global open-source air quality monitoring with real-time and historical data. Provides PM2.5, PM10, NO2, O3, CO, and other pollutants.
+  
   
 ### 🛠 Tech Stack
 - **Frontend**: React.js with modern hooks and context
 - **Backend**: Express.js with RESTful APIs
-- **Database**: MongoDB for storing processed NASA data
 - **Maps**: Leaflet.js for interactive mapping
 - **Visualization**: Chart.js and D3.js for data visualization
 - **Data Processing**: Python scripts for NASA data ingestion
@@ -47,24 +58,16 @@ nasa-healthy-cities/
 ├── client/                 # React frontend
 ├── server/                 # Express backend
 ├── data-processing/        # Python NASA data processors
-├── docs/                   # Documentation
-└── deployment/            # Docker and deployment configs
 ```
-## Data Sources Details
-**ECOSTRESS**: Collected by ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station.
- **Sentinel-2**: European Space Agency Sentinel-2 Mission.
- **SRTM**: NASA Shuttle Radar Topography Mission.
- **OpenAQ**: Global open-source air quality monitoring with real-time and historical data. Provides PM2.5, PM10, NO2, O3, CO, and other pollutants.
 
 ### 🌟 Deliverables
 1. **Interactive City Dashboard**: Real-time environmental monitoring
 2. **Intervention Planning Tool**: Scenario modeling and simulation
-3. **Policy Brief Generator**: Printable reports for stakeholders
+3. **Future Overview**: Prediction of greenspace percentage, rainfall, windspeed and temperature using previous years data.
 4. **Cost-Benefit Calculator**: Economic impact assessment
 
 ### 🌏 Focus Areas
-- **Bangladesh**: Urban heat and flood management in Dhaka
-- **Global Examples**: Scalable solutions for megacities worldwide
+- **Dhaka, Bangladesh**: Comprehensive studies on greenspace distribution, heat stress, flood risk, and air quality within Dhaka District. These analyses aim to support sustainable urbanization, guide intervention planning, project future environmental scenarios, and conduct cost–benefit evaluations for informed decision-making.
 
 ### 📈 Impact Metrics
 - Urban Heat Island reduction

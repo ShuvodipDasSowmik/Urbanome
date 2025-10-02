@@ -10,7 +10,7 @@ Climate change brings new complexities to maintaining society and environmental 
 ### 🚀 Key Features
 
 #### 1. City Digital Twin
-- **Heat Monitoring**: MODIS/VIIRS Land Surface Temperature data
+- **Heat Monitoring**: ECOSTRESS Land Surface Temperature
 - **Flood Risk Assessment**: GPM IMERG precipitation data + SRTM elevation
 - **Air Quality Tracking**: TEMPO air quality data (for North America)
 - **Green Space Analysis**: NDVI vegetation indices

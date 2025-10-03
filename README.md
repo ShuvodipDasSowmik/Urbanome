@@ -2,10 +2,14 @@
 ## NASA Space Apps Challenge 2025
 
 ### 🌍 Project Overview
-A comprehensive urban planning application that leverages NASA Earth observation data to develop smart strategies for sustainable city growth while maintaining the wellbeing of people and the environment.
+A comprehensive urban planning application that leverages NASA Earth observation data to develop smart strategies for sustainable city growth while maintaining the wellbeing of people and the environment. This tool that allows users to simulate environmental actions — such as planting trees or creating waterfields — to improve urban sustainability. It visualizes the current environmental conditions of Dhaka on an interactive map and projects both financial and ecological outcomes over the next 15 years using our custom ROI calculation algorithm. Additionally, the system’s AI model predicts key environmental metrics for the next 5 years, helping policymakers and communities make informed, data-driven decisions.
 
 ### 🎯 Challenge Description
-Climate change brings new complexities to maintaining society and environmental wellbeing in cities. This project demonstrates how urban planners can use NASA Earth observation data to develop smart strategies that balance human quality of life with environmental sustainability.
+Dhaka, one of the fastest-growing megacities, faces rising temperatures, air pollution, flooding, and unplanned urbanization. Despite the availability of rich NASA Earth observation data, policymakers and communities struggle to translate this data into actionable strategies. There is no accessible tool that shows the long-term financial and environmental impact of urban interventions — such as tree planting or water management — in a way that supports sustainable planning and resilience building.
+
+#### 🚀 Live Web Application
+
+https://urbanome-xi.vercel.app
 
 ### 📊 Dashboard
 
@@ -50,6 +54,24 @@ Climate change brings new complexities to maintaining society and environmental 
 - **Sentinel-2**: Normalized Difference Vegetation Index for green space analysis
 - **SRTM**: Shuttle Radar Topography Mission elevation data
 - **OpenAQ**: Air quality measurements
+
+### 🚀 Usage of AI
+- Coding: GPT 5.1, Claude 4.0
+- Research: ChatGPT
+
+### 🌟 ROI Calculation Algorithm Data Sources [ Modified for Dhaka ]
+
+- Wu, S., Yang, H., Luo, P., Luo, C., Li, H., Liu, M., Ruan, Y., Zhang, S., Xiang, P., Honghong, J., & Yue, C. (2021). The effects of the cooling efficiency of urban wetlands in an inland megacity: A case study of Chengdu, Southwest China. Building and Environment, 108128.
+https://doi.org/10.1016/j.buildenv.2021.108128
+        
+- Feng, X., Yu, J., Xin, C., Ye, T., Wang, T., Chen, H., Zhang, X., & Zhang, L. (2023). Quantifying and Comparing the Cooling Effects of Three Different Morphologies of Urban Parks in Chengdu. Land, 12(2), 451.
+https://doi.org/10.3390/land12020451
+
+- Wong, N. H., Tay, S. F., Wong, R., Ong, C. L., & Sia, A. (2003). Life cycle cost analysis of rooftop gardens in Singapore. Building and Environment, 38(3), 499-509.
+https://doi.org/10.1016/S0360-1323(02)00131-2
+
+- Hsu, K.-W., & Chao, J.-C. (2020). Economic Valuation of Green Infrastructure Investments in Urban Renewal: The Case of the Station District in Taichung, Taiwan. Environments, 7(8), 56.
+https://doi.org/10.3390/environments7080056
    
 ![Data Sources](./client/public/Sources.png)
   
@@ -57,7 +79,7 @@ Climate change brings new complexities to maintaining society and environmental 
 - **Frontend**: React.js with modern hooks and context
 - **Backend**: Express.js with RESTful APIs
 - **Maps**: Leaflet.js for interactive mapping
-- **Visualization**: Chart.js and D3.js for data visualization
+- **Visualization**: Chart.js for data visualization
 - **Data Processing**: Python scripts for NASA data ingestion
 
 ### 🏗 Project Structure

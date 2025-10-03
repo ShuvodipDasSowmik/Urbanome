@@ -714,7 +714,7 @@ export const interventionAnalysisService = {
   // Store baseline data on backend for intervention comparison
   storeBaselineData: async (analysisData) => {
     try {
-      const response = await fetch("/api/interventions/store-baseline", {
+      const response = await fetch("https://nsac-primary-project.onrender.com/api/interventions/store-baseline", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -779,7 +779,7 @@ export const interventionAnalysisService = {
 
       // Try backend API first for intervention analysis
       try {
-        const response = await fetch("/api/interventions/analyze", {
+        const response = await fetch("https://nsac-primary-project.onrender.com/api/interventions/analyze", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

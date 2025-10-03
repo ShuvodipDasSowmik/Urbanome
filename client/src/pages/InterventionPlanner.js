@@ -352,8 +352,11 @@ const InterventionPlanner = () => {
 
         console.log("Sending polygon data to backend...");
 
+        // console.log(drawnCoordinates);
+        
         // Send polygon data to backend
         const response = await axios.post(
+          // "https://urbanome-server.vercel.app/api/analysis/current-situation",
           "https://nsac-primary-project.onrender.com/api/analysis/current-situation",
           {
             polygonData: drawnCoordinates,

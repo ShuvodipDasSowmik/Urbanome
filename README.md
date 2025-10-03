@@ -28,6 +28,8 @@ Climate change brings new complexities to maintaining society and environmental 
 - **Wetlands Creation**: Flood mitigation and biodiversity
 - **Green Corridors**: Air quality improvement
 
+![Demo Video](./client/public/Intervention.gif)
+
 #### 3. Cost-Benefit Analysis
 - Budget-constrained optimization
 - ROI calculations for interventions
@@ -39,17 +41,15 @@ Climate change brings new complexities to maintaining society and environmental 
 - **Rainfall and Windspeed**: Estimating future average annual rainfall and windspeed using a polynomial regression model trained on 17 years of historical climate data.  
 - **Temperature**: Predicting future average annual temperature by incorporating 17 years of historical temperature, rainfall, and windspeed data into a regression model. The predicted rainfall and windspeed values are also used as key predictors in the temperature model for improved accuracy.
 
+![future](./client/public/Future_Overview.png)
+
 ### 📊 NASA Data Sources
 - **ECOSTRESS**: Land Surface Temperature for heat mapping
 - **Sentinel-2**: Normalized Difference Vegetation Index for green space analysis
 - **SRTM**: Shuttle Radar Topography Mission elevation data
 - **OpenAQ**: Air quality measurements
-
-### 🌐Data Sources Details
-- **ECOSTRESS**: The ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station, a NASA mission mounted on the International Space Station (ISS). It measures surface temperature to study plant water use, heat stress, and impacts of climate variability.
-- **Sentinel-2**: An Earth observation mission of the European Space Agency (ESA) under the Copernicus Programme. While developed and operated by ESA, NASA contributes through ground station support, global data distribution, and collaborative research efforts.
-- **SRTM**: The Shuttle Radar Topography Mission, a joint project of NASA and the National Geospatial-Intelligence Agency (NGA). Flown aboard the Space Shuttle Endeavour in 2000, it collected near-global digital elevation data to create one of the most complete high-resolution topographic databases of Earth.
-- **OpenAQ**: A global open-source air quality platform providing real-time and historical data. It aggregates measurements of pollutants such as PM2.5, PM10, NO₂, O₃, CO, and others from monitoring stations worldwide to support research, policy, and public awareness.  
+   
+![Data Sources](./client/public/Sources.png)
   
 ### 🛠 Tech Stack
 - **Frontend**: React.js with modern hooks and context

@@ -23,6 +23,21 @@ router.post("/analyze", async (req, res) => {
       });
     }
 
+    // Validate intervention config structure
+    if (!interventionConfig.type) {
+      return res.status(400).json({
+        success: false,
+        message: "Intervention configuration must include 'type' field",
+      });
+    }
+
+    if (!interventionConfig.config && !interventionConfig.parameters) {
+      return res.status(400).json({
+        success: false,
+        message: "Intervention configuration must include 'config' or 'parameters' field",
+      });
+    }
+
     // Retrieve baseline data from store
     const baselineData = analysisDataStore.get(baselineDataId);
     if (!baselineData) {
@@ -432,6 +447,9 @@ router.get("/case-studies", async (req, res) => {
  */
 function simulateInterventionAnalysis(baselineData, interventionConfig) {
   const { type, config } = interventionConfig;
+  
+  // Ensure config exists, fallback to empty object
+  const safeConfig = config || {};
 
   // Base impact multipliers by intervention type (updated with realistic costs)
   const impactMultipliers = {
@@ -466,8 +484,8 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
     impactMultipliers[type] || impactMultipliers["urban-forestry"];
 
   // Calculate impacts based on intervention parameters
-  const coverage = config.coverage || 50;
-  const intensity = config.intensity || 1;
+  const coverage = safeConfig.coverage || 50;
+  const intensity = safeConfig.intensity || 1;
   const scale = (coverage / 100) * intensity;
 
   // Simulate baseline metrics (from stored baseline data)
@@ -527,11 +545,13 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
   const discountRate = 0.045;
   const timeframe = 20;
   let npv = -totalCost; // Initial investment
+  let totalDiscountedBenefits = 0;
 
   for (let year = 1; year <= timeframe; year++) {
     const discountedBenefit =
       netAnnualBenefits / Math.pow(1 + discountRate, year);
     npv += discountedBenefit;
+    totalDiscountedBenefits += discountedBenefit;
   }
 
   // CORRECT ROI calculation - Annual Return / Initial Investment
@@ -569,7 +589,7 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
     aqi: projectedAQI + Math.sin(index / 3) * 15 + (Math.random() - 0.5) * 10,
     energy:
       1000 -
-      energySavings / 12 +
+      annualEnergySavings / 12 +
       Math.sin(index / 2) * 200 +
       (Math.random() - 0.5) * 50,
   }));

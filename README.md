@@ -19,7 +19,7 @@ Climate change brings new complexities to maintaining society and environmental 
 - **Flood Risk Assessment**: SRTM elevation Data
 - **Air Quality Tracking**: OpenAQ Air Quality Data
 - **Green Space Analysis**: Sentinel-2 NDVI vegetation indices
-  
+#### Greenspace Section Demo:  
 ![Demo Video](./client/public/DigitalTwin.gif)
   
 #### 2. Intervention Simulator

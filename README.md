@@ -7,6 +7,11 @@ A comprehensive urban planning application that leverages NASA Earth observation
 ### 🎯 Challenge Description
 Climate change brings new complexities to maintaining society and environmental wellbeing in cities. This project demonstrates how urban planners can use NASA Earth observation data to develop smart strategies that balance human quality of life with environmental sustainability.
 
+### 📊 Dashboard
+
+![Dashboard](./client/public/Dashboard.png)
+
+
 ### 🚀 Key Features
 
 #### 1. City Digital Twin

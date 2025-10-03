@@ -35,6 +35,8 @@ Climate change brings new complexities to maintaining society and environmental 
 - ROI calculations for interventions
 - Environmental impact quantification
 - Social benefit metrics
+  
+![Demo Video](./client/public/Cost_benefit.gif)
 
 #### 4. Future Overview
 - **Greenspace Analysis**: Forecasting the percentage of greenspace (grasses and trees) for the next five years using regression models. The analysis is based on multi-temporal GeoTIFF images (1990–2025) obtained from Landsat 5, 7, and 8 satellites.  

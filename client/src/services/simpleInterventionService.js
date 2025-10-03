@@ -157,7 +157,7 @@ class SimpleInterventionService {
 
       // Try backend first
       try {
-        const response = await fetch("/api/interventions/analyze", {
+        const response = await fetch("https://nsac-primary-project.onrender.com/api/interventions/analyze", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

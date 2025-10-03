@@ -431,7 +431,7 @@ router.get("/case-studies", async (req, res) => {
  * In production, this would call Python analysis scripts
  */
 function simulateInterventionAnalysis(baselineData, interventionConfig) {
-  const { type, parameters } = interventionConfig;
+  const { type, config } = interventionConfig;
 
   // Base impact multipliers by intervention type (updated with realistic costs)
   const impactMultipliers = {
@@ -466,8 +466,8 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
     impactMultipliers[type] || impactMultipliers["urban-forestry"];
 
   // Calculate impacts based on intervention parameters
-  const coverage = parameters.coverage || 50;
-  const intensity = parameters.intensity || 1;
+  const coverage = config.coverage || 50;
+  const intensity = config.intensity || 1;
   const scale = (coverage / 100) * intensity;
 
   // Simulate baseline metrics (from stored baseline data)
@@ -485,7 +485,7 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
   const projectedCarbon = Math.max(baselineCarbon - carbonReduction, 200);
 
   // Calculate costs and REALISTIC benefits
-  const quantity = parameters.quantity || Math.floor(coverage * 10);
+  const quantity = config.quantity || Math.floor(coverage * 10);
   const totalCost = quantity * multiplier.costPerUnit;
 
   // REALISTIC benefit calculations based on intervention type and quantity
@@ -624,7 +624,7 @@ function simulateInterventionAnalysis(baselineData, interventionConfig) {
       after: afterData,
     },
     timeline: {
-      implementation: `${parameters.timeline || 6} months`,
+      implementation: `${config.timeline || 6} months`,
       fullEffects: "2-3 years",
       lifespan: "15-25 years",
     },
